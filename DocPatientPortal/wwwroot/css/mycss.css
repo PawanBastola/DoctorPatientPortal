@@ -11,8 +11,16 @@
 .form-containers {
     /* position: absolute; */
     margin-top: 10vh;
+    margin-right:auto;
+    margin-top: auto;
     background: #5002736e;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px 0px #000;
+}
+
+.roundimage{
+    background:green;
+    border: 1px solid green;
+    border-radius: 50%;
 }
