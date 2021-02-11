@@ -1,0 +1,67 @@
+﻿A) Url routing for.
+
+																		//Appointment.
+																		1.Book
+																		2.View
+																		3.Cancel
+
+																		4.Search Doctor.
+																		//Organ
+																		5. Search organ
+																		6. Donate organ
+																		7. FeedBack
+
+																	First 7 Task for tomorrow.
+
+																		B) Layout for Doctor.
+																		i. route all of them.
+
+
+																	C) Layout for Admin.
+																	i. route all of them.
+
+D) Centering the footer table/// content;
+
+D) Forms designing. (a. users b. admin c. Doctors)
+
+E) CSS & Javascript.
+
+
+
+
+Introduction
+
+Abstract 
+    -3 points.
+
+Problem Statement
+    -2 points.
+
+Features
+    -5 points.
+
+Objectives
+    -3 -4 points.
+
+Platform Used
+    -Front End Tools. (HTML, CSS, JAVASCRIPT, JQUERY)
+        FRAMEWORKS - BOOTSTRAP.
+    -Backend Tool (C#)
+        Framework - .Net Core, Entity Framework.
+
+ER - Diagram
+
+DFD - UPto Level 1
+
+Conclusion.
+
+
+
+///////////////////////////-------2077/10/24--------/////////////////////////////
+Guest Layout.
+
+login page.
+sign up page.
+	signup for doctor
+	Signup for patient
+

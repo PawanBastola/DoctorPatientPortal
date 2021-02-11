@@ -1,0 +1,46 @@
+﻿@page
+@model DocPatientPortal.Views.Appointment.ApptViewModel
+@{
+    Layout = "_LayoutPatient";
+}
+
+<br />
+<div style="background-color: grey;color:white; display:flex; justify-content:center;align-items:center;"><p>MY APPOINTMENT</p></div>
+<br />
+<table class="table table-dark table-hover" id="datatable">
+    <thead>
+
+        <tr class="text-lg-center">
+
+            <th>Appointment No.</th>
+            <th>Doctor</th>
+            <th>Speciality</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Action</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="text-lg-center" style="font-size:larger;">
+
+            <td>3456</td>
+            <td>hari</td>
+            <td>Heart</td>
+            <td>2/1/2021</td>
+            <td>12:00 am</td>
+            <td><a class="btn btn-danger">Cancel</a></td>
+        </tr>
+        <tr class="text-lg-center" style="font-size:larger;">
+            <td>3467</td>
+            <td>shyam</td>
+            <td>Ear</td>
+            <td>2/4/2021</td>
+            <td>9:00 am</td>
+            <td><a class="btn btn-danger">Cancel</a></td>
+
+        </tr>
+       
+      
+    </tbody>
+</table>

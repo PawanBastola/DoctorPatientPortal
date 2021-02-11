@@ -1,0 +1,47 @@
+﻿@page
+@model DocPatientPortal.Views.Admin_Doctors.View_DoctorModel
+@{
+    Layout = "_LayoutAdmin";
+}
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('.adminviewdoctorjq').DataTable();
+        });
+    </script>
+}
+
+<br />
+<table class="table table-light table-hover adminviewdoctorjq">
+    <thead>
+
+        <tr>
+            <th>sn</th>
+            <th>Name</th>
+            <th>Speciality</th>
+            <th>Phone number</th>
+            <th>Email</th>
+            <th>Update/Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Salunkhey</td>
+            <td>Bone</td>
+            <td>+91 9845784125</td>
+            <td>salunkhey@gmail.com</td>
+            <td><a class="btn btn-warning">Update</a>   <a class="btn btn-danger"> Delete </a></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Tarika</td>
+            <td>Skin</td>
+            <td>+91 984556825</td>
+            <td>tarika@gmail.com</td>
+            <td><a class="btn btn-warning">Update</a>   <a class="btn btn-danger"> Delete </a></td>
+        </tr>
+    </tbody>
+</table>

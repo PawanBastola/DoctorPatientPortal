@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]-DocPatientPortal</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/mycss.css" />
+    <link href="~/css/profile.css" rel="stylesheet" />
+    <link href="~/css/admin_button_hide.css" rel="stylesheet" />
+    <link href="~/lib/jquery-datatables/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    <header>
+        <!--START navigation bar -->
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index">MyDoctor</a>
+            <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item ">
+                        <a asp-controller="Admin_Doctors" asp-action="View_Doctor" class="nav-link">Add/View Doctor</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a asp-controller="Admin_Customers" asp-action="View_Customers" class="nav-link">View Customer</a>
+                    </li>
+                    <!--To be Continue........................-->
+                    <li class="nav-item ">
+                        <a asp-controller="Admin_Appointment" asp-action="View_Appointment" class="nav-link">View Appointments</a>
+                    </li>
+                    <li>
+                        <a asp-controller="Organ" asp-action="OrgSearch" class="nav-link">Search Organ</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a asp-controller="Feedback" asp-action="Index" class="nav-link">Feedback</a>
+                    </li>
+
+
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <div class="profileimage">
+                            <a asp-controller="Profile" asp-action="Index"> <img src="~/image/profile.jpg" style="width:50px; height:50px; border:3px solid #31a24c; border-radius:50%;" alt="User Profile" /> </a>
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <br> <br> <br>
+    <!-- Start Footer -->
+    <footer>
+        <div class="container-fluid">
+            <div class="row bg-dark justify-content-center">
+                <div class="col text-light">
+                    <table class="table table-fluid table-dark">
+                        <thead class="text-light ">
+                            <tr class="text-center">
+                                <th>About Us</th>
+                                <th>Services</th>
+                                <th>Developers</th>
+                                <th>Contact Us</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="text-center">
+                                <td> <p>we're the team of doctors</p> </td>
+                                <td> <p>online appointments</p> </td>
+                                <td><p>Pawan Bastola</p></td>
+                                <td> <p>Email :- pawanbastola3@gmail.com</p> </td>
+
+                            </tr>
+                        </tbody>
+
+                        <tfoot>
+
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+            <div class="row bg-dark justify-content-center">
+                <div class="col text-light text-center">
+                    <p>&#169 2020 All rights reserved | MyDoctor Services</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery-datatables/js/jquery.dataTables.min.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

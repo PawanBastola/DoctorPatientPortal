@@ -1,0 +1,12 @@
+﻿@page
+@model DocPatientPortal.Views.Update.IndexModel
+@{
+    Layout = "_LayoutPatient";
+}
+<form asp-controller="Blood" asp-action="UpdateData" method="post">
+    Name: <input type="text" name="pname" value=@ViewBag.Data.pname />
+    Address: <input type="text" name="paddress" value=@ViewBag.Data.paddress />
+    Blood Group: <input type="text" name="pblood" value=@ViewBag.Data.pblood />
+    <button class="btn btn-primary">Submit</button>
+</form>
+

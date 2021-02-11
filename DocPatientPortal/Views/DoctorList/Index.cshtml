@@ -1,6 +1,47 @@
 ﻿@page
 @model DocPatientPortal.Views.DoctorList.IndexModel
 @{
+    Layout = "_LayoutPatient";
 }
-<p class="text-center text-success"> Disease : Doctor Name</p>
-<p class="text-center text-success"> Bone Cancer : Parash</p>
+<br />
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#datatable').DataTable();
+
+        });
+    </script>
+}
+<table class="table table-secondary table-hover " id="datatable">
+    <thead>
+
+        <tr>
+            <th>sn</th>
+            <th>Name</th>
+            <th>Speciality</th>
+            <th>Phone number</th>
+            <th>Email</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>abcd</td>
+            <td>Bone</td>
+            <td>+91 9845784125</td>
+            <td>abcd@gmail.com</td>
+
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>efgh</td>
+            <td>Skin</td>
+            <td>+91 984556825</td>
+            <td>efgh@gmail.com</td>
+
+        </tr>
+    </tbody>
+</table>

@@ -23,7 +23,7 @@ namespace DocPatientPortal.Controllers
             //return Redirect("Home/Index")
 
 
-            return Redirect("/Home/Index");
+            return Redirect("/Appointment/ApptBook");
         }
     }
 }

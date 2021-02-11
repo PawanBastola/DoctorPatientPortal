@@ -15,5 +15,6 @@ namespace DocPatientPortal.Models
         public string pname { get; set; }
         public string paddress { get; set; }
         public string pblood { get; set; }
+        public long pnumber { get; set; }
     }
 }

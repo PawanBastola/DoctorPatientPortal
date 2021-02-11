@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using DocPatientPortal.Models;
 
 namespace DocPatientPortal.Models
 {
@@ -25,7 +26,10 @@ namespace DocPatientPortal.Models
         //Need to register your models here
         // public DbSet<Product> Products { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Doctor> Doctors { get; set; }
 
-
+        //Need to register your models here
+        // public DbSet<Product> Products { get; set; }
+       
     }
 }

@@ -1,0 +1,23 @@
+﻿public IActionResult update(Course course)
+        { if (course != null)
+            {
+
+              return RedirectToAction("Index",course);
+            }
+            else
+                return RedirectToAction("Index");
+
+
+        }
+
+public IActionResult Index(Course course)
+        {
+            if (course != null)
+            {
+                ViewBag.updatedata = course;
+                Retrivedata();
+                return View();
+                
+            }
+
+value="@ViewBag.updatedata.cname"
