@@ -1,0 +1,32 @@
+﻿ ----------------------------------------------------------------------------------------------1
+ <script type="text/javascript">
+        $(document).ready(function () {
+                $("p").text("This is the text overriding through the jquery");
+        });
+ </script>       
+ 
+ ---------------------------------------------------------------------------------------------2
+ <script type="text/javascript">
+        $(document).ready(function () {
+            $("p").click(function () {
+                $("p").text("This is the text overriding through the jquery");
+            });
+        });
+ </script>
+ -------------------------CSS Selector--------------------------------------------------------3
+ <script type="text/javascript">
+       $(document).ready(function () {
+            $('#datatable').DataTable();
+            $("ul li.mark").css("background", "yellow");
+            $("ul li#red").css("background","red");
+        });
+ </script>
+----------HTML ---------------------
+ <ul type="circle">
+    <li class="mark"> hello</li>
+    <li class="mark"> hy</li>
+    <li id="red">highlight this</li>
+
+</ul>
+ ---------------------------------------------------------------------------------------------4
+

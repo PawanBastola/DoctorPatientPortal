@@ -1,0 +1,36 @@
+﻿@page
+@model DocPatientPortal.Views.SignUp.IndexModel
+@{
+    Layout = "_LayoutGuest";
+}
+
+<form method="post" asp-controller="" asp-action="register">
+    <input type="text" name="Name" placeholder="Full Name" />
+    <input type="text" name="DOB" placeholder="Date of Bith" />
+    <input type="text" name="Address" placeholder="Address" />
+    <input type="number" name="phone" placeholder="phone number" />
+    <input type="text" name="email" placeholder="email address" />
+
+    <!--gender in radio button-->
+    <input type="radio" name="gender" value="M" checked />Male
+    <input type="radio" name="gender" value="F" />Female
+
+
+    <!--blood group in select /// options-->
+    <select>
+        <option selected>Blood Group</option>
+        <option>O+</option>
+        <option>B+</option>
+        <option>AB+</option>
+        <option>AB-</option>
+        <option>O-</option>
+        <option>B-</option>
+        <option>A-</option>
+    </select>
+
+
+    <input type="text" name="uname" placeholder="username" />
+    <input type="password" name="password" placeholder="password" />
+    <input type="password" name="cpassword" placeholder="confirmpassword" />
+    <input type="button" name="submit" value="register"/>
+</form>

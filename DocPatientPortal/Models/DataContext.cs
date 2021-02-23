@@ -27,9 +27,13 @@ namespace DocPatientPortal.Models
         // public DbSet<Product> Products { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Doctor> Doctors { get; set; }
+        public DbSet<UserLogin> userlogins { get; set; }
+
+
+
 
         //Need to register your models here
         // public DbSet<Product> Products { get; set; }
-       
+
     }
 }

@@ -35,7 +35,7 @@
     <td>@item.paddress</td>
     <td>@item.pblood</td>
     <td>@item.pnumber</td>
-    <td><a class="btn btn-warning">Update</a>   <a class="btn btn-danger" href="Blood/Delete?pid=@item.pid" >Delete</a></td>
+    <td><a class="btn btn-warning">Update</a>   <a asp-controller="Blood" asp-action="Delete" asp-route-id="@item.pid" class="btn btn-danger">Delete</a></td>
 
 </tr>
     }

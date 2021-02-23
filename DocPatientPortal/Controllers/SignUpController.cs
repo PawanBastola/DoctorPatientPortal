@@ -11,11 +11,6 @@ namespace DocPatientPortal.Controllers
     {
         public IActionResult Index()
         {
-            #region practice
-            //select the text and press || ctrl K,S || to surround with
-             
-             
-            #endregion
             return View();
         }
     }
