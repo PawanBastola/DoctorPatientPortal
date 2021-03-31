@@ -4,36 +4,64 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using DocPatientPortal.Models;
+using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 
 namespace DocPatientPortal.Controllers
 {
     public class LoginController : Controller
     {
+
         DataContext dal = new DataContext();
+
         public IActionResult Index()
         {
+
             return View();
         }
 
         [HttpPost]
-        public IActionResult LoginCheck(UserLogin userlogins)
+        public IActionResult LoginCheck(String username, String password)
         {
+            var user_List = dal.userlogins.Where(x => x.username.Equals(username)).ToList();
 
-            //checking the username and password
-            //write the code here and redirect to the home page if condition comes true.
+            #region IF admin role check
 
-            //my logic : if username and password is matched among the rows of the database then login is successful.
-            //or if table ko row has the given login information then login garne.
-            if ()
+            if (user_List.Count() == 1 && user_List[0].password.Equals(password) && user_List[0].role.Equals("admin"))
             {
+                //admin role
+                //setting session using HttpContext
 
+               /* HttpContext.Session.SetString("User", JsonConvert.SerializeObject(user_List[0])); //note argument should be in strings only.
+                HttpContext.Session.SetString("Logged", "true");*/
+
+                //HttpContext.Session.SetString("password",password);
+                return RedirectToAction("View_Appointment", "Admin_Appointment");
             }
-            //if (username == true && password == true)
-            //return Redirect("Home/Index")
+            #endregion
+            #region ELSE IF patient role check
 
+            else if (user_List.Count() == 1 && user_List[0].password.Equals(password) && user_List[0].role.Equals("patient"))
+            {
+                //doctor role
+                return RedirectToAction("ApptBook", "Appointment");
+            }
+            #endregion
+            else
+            {
+                TempData["error"] = "invalid credentials";
+                return RedirectToAction("Index", "Login");
+            }
 
-
-            return Redirect("/Appointment/ApptBook");
         }
+
+        //yo action kai call vako xaina.
+        public IActionResult Logout()
+        {
+            HttpContext.Session.SetString("User", "null");
+            HttpContext.Session.SetString("Logged", "null");
+            return RedirectToAction("Index", "Login");
+        }
+
     }
 }

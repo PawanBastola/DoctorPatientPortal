@@ -28,7 +28,7 @@ namespace DocPatientPortal.Models
         public DbSet<User> Users { get; set; }
         public DbSet<Doctor> Doctors { get; set; }
         public DbSet<UserLogin> userlogins { get; set; }
-
+        public DbSet<Appointment> appointmentss { get; set; }
 
 
 

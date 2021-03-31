@@ -12,10 +12,16 @@ namespace DocPatientPortal.Controllers
         //create datacontext object
         DataContext dal = new DataContext();
 
-        public IActionResult Index()
+        public IActionResult Index(int did)
         {
+            var docData = dal.Doctors.Find(did);
+            ViewBag.ViewProfile = docData;
             return View();
         }
+
+       
+
+        
 
         
 

@@ -35,15 +35,16 @@ namespace DocPatientPortal.Controllers
             {
                 Console.WriteLine(ex);
             }
-            return RedirectToAction("Index","Blood");
+            return RedirectToAction("Index", "Blood");
 
         }
         #endregion
         #region UPDATE
+
         public IActionResult Update(int pid)
         {
-            var data = dal.Users.Find(pid);
-            ViewBag.Data = data;
+            var dataset = dal.Users.Find(pid);
+            ViewBag.UpdateData = dataset;
             //update ko lagi euta form banaune data varine.
             //index ko text box ma value = @ViewBag.Data.pname
             //index ko text box ma value = @ViewBag.Data.paddress
@@ -58,7 +59,7 @@ namespace DocPatientPortal.Controllers
         {
             dal.Users.Update(users);
             dal.SaveChanges();
-            return Redirect("/Blood/Index");
+            return RedirectToAction("Index");
         }
         #endregion
         #region DELETE
@@ -67,7 +68,7 @@ namespace DocPatientPortal.Controllers
             var data = dal.Users.Find(pid);
             dal.Users.Remove(data);
             dal.SaveChanges();
-            return RedirectToAction("Index","Blood");
+            return RedirectToAction("Index", "Blood");
         }
         #endregion
         #region Select

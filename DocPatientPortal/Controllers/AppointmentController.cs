@@ -1,9 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using System.Threading.Tasks;
 using DocPatientPortal.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace DocPatientPortal.Controllers
 {
@@ -11,12 +15,17 @@ namespace DocPatientPortal.Controllers
     {
         DataContext dal = new DataContext();
 
+
+        //apptBook view matrai ho yo.
         public IActionResult ApptBook()
         {
+            ViewBag.speciality = new List<String> { "Bone", "Cardiac", "something" };
             selectUsers();
             return View();
         }
 
+
+        #region SelectCode
         public IActionResult selectUsers()
         {
             try
@@ -36,6 +45,34 @@ namespace DocPatientPortal.Controllers
             }
             return Redirect("/Appointment/ApptBook");
         }
+
+        #endregion
+
+        //here we are going to use the book [Button] residing on [ApptBook View] to insert appintment details in appointment table.
+        //which have aid(Key), uid, doc_id, adate(DateTime), atime(DateTime)
+
+        //quering for available doctor
+        //To Be Continue...
+        public IActionResult Check(String doc_spec, DateTime date, DateTime time)// multiple constraints query is passed eg. Doc-speciality, Date, Time.
+        {
+
+            try
+            {
+                /*DataContext dal = new DataContext();*/
+                var dataset = dal.Doctors.Find(doc_spec, date, time);
+                ViewBag.available_doc = dataset;
+
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+
+            return RedirectToAction("ApptBook");
+        }
+
 
 
         public IActionResult ApptView()

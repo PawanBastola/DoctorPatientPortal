@@ -9,21 +9,23 @@
     <div class="personalinfo-card">
         <div class="container">
             <div class="headings">
-                <p>Personal Information</p>
+                <p>Doctor Profile</p>
                 <hr>
             </div>
             <div class="content">
                 <div class="leftContent">
-                    <p>Name: Pawan Bastola</p>
-                    <p>Gender: Male</p>
-                    <p>Blood gp.: O+ve</p>
-                    <p>DOB: 1999 A.D.</p>
-                    <p>Address: Bhadrapur-9</p>
+                    <p>Name: @ViewBag.ViewProfile.dname</p>
+                    <p>Gender: @ViewBag.ViewProfile.dgender</p>
+                    <!--<p>Blood gp.: O+ve</p>
+                    <p>DOB: 1999 A.D.</p>-->
+                    <p>Address: @ViewBag.ViewProfile.daddress</p>
                     <p>Nationality: Nepalese</p>
-                    <p>Weight: 55 kg.</p>
-                    <p>Height: 5.5"</p>
-                    <p>Contact: 9860792780</p>
-                    <p>Email: pawanbastola3@gmail.com</p>
+                    <!--<p>Weight: 55 kg.</p>
+                    <p>Height: 5.5"</p>-->
+                    <p>Contact: @ViewBag.ViewProfile.dnumber</p>
+                    <p>Email: @ViewBag.ViewProfile.dmail</p>
+                    <p>Degree: @ViewBag.ViewProfile.dacademicqual</p>
+
 
                 </div>
                 <div class="rightContent">
@@ -34,30 +36,6 @@
             </div>
         </div>
     </div>
-    <!--Second card-->
-    <div class="diaginfo-card">
-        <div class="container">
-            <div class="headings">
-                <p>Diagnosed Information</p>
-                <hr>
-            </div>
-            <div class="content">
 
-                <div class="leftContent">
-
-                    <ul type="Circle">
-                        <li>Blood cancer in 2015.</li>
-                        <li>Common fever.</li>
-                        <li>Diagnosed with corona virus 2019.</li>
-                    </ul>
-
-                </div>
-
-
-            </div>
-        </div>
-
-    </div>
 </div>
-
 

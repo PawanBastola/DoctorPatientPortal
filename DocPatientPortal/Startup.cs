@@ -8,22 +8,34 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Session;
+using Microsoft.AspNetCore.Routing;
 
 namespace DocPatientPortal
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            //session part start
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(60);
+            });
+            //session part end
+
+            //using json file
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -32,6 +44,11 @@ namespace DocPatientPortal
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
+                //session Start
+                app.UseSession();
+                //session End
+                app.UseStaticFiles();
             }
             else
             {
@@ -52,6 +69,10 @@ namespace DocPatientPortal
                     name: "default",
                     pattern: "{controller=Login}/{action=Index}/{id?}");
             });
+
+            //using json file
+            
+            //app.UseMvc(routes => { routes.MapRoute(name: "default", template:"{controller = Appointment}/{action = ApptBook}/{id?}"); });
         }
     }
 }

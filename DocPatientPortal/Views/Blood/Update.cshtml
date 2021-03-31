@@ -1,0 +1,13 @@
+﻿@page
+@model DocPatientPortal.Views.Blood.UpdateModel
+@{
+    Layout = "_LayoutAdmin";
+}
+<form method="post" asp-controller="Blood" asp-action="UpdateData">
+    <input type="text" name="pid" value="@ViewBag.updatedata.pid" hidden />
+    <input type="text" name="pname" value="@ViewBag.updatedata.pname" />
+    <input type="text" name="paddress" value="@ViewBag.updatedata.paddress" />
+    <input type="text" name="pblood" value="@ViewBag.updatedata.pblood" />
+    <input type="submit" name="submit" value="Update" />
+
+</form>

@@ -193,3 +193,4 @@ E:\Projects\DocPatientPortal\DocPatientPortal\obj\Debug\netcoreapp3.1\Razor\View
 E:\Projects\DocPatientPortal\DocPatientPortal\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutGuest.cshtml.g.cs
 E:\Projects\DocPatientPortal\DocPatientPortal\obj\Debug\netcoreapp3.1\Razor\Views\TempViewDProfile\Index.cshtml.g.cs
 E:\Projects\DocPatientPortal\DocPatientPortal\obj\Debug\netcoreapp3.1\Razor\Views\SignUp\Index.cshtml.g.cs
+E:\Projects\DocPatientPortal\DocPatientPortal\obj\Debug\netcoreapp3.1\Razor\Views\Blood\Update.cshtml.g.cs

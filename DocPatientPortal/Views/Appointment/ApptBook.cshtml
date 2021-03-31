@@ -1,10 +1,15 @@
 ﻿@page
 @model DocPatientPortal.Views.Appointment.ApptBookModel
+
 @{
     Layout = "_LayoutPatient";
 }
 
 <br />
+
+<h1> @ViewBag.name </h1>
+<h1> @ViewBag.phone </h1>
+<h1> @ViewBag.email </h1>
 
 
 
@@ -12,7 +17,7 @@
     <label for="example-text-input" class="col-2 col-form-label">Category</label>
     <div class="col-10">
 
-        <select class="form-select" aria-label="Default select example">
+        <select class="form-select" aria-label="Default select example" name="doc_spec">
             <option selected>Bone</option>
             <option value="cardiac">Cardiac</option>
             <option value="skin">Skin</option>
@@ -23,7 +28,7 @@
 <div class="form-group row">
     <label for="example-date-input" class="col-2 col-form-label">Date</label>
     <div class="col-10">
-        <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+        <input class="form-control" type="date" value="2011-08-19" id="example-date-input" name="date">
     </div>
 </div>
 
@@ -31,14 +36,14 @@
 <div class="form-group row">
     <label for="example-time-input" class="col-2 col-form-label">Time</label>
     <div class="col-10">
-        <input class="form-control" type="time" value="13:45:00" id="example-time-input">
+        <input class="form-control" type="time" value="13:45:00" id="example-time-input" name="time">
     </div>
 </div>
 
 <div class="form-group row">
     <label for="" class="col-2 col-form-label"></label>
     <div class="col-10">
-        <a role="button" href="" class="btn btn-warning font-weight-bold form-control" id="hello0">Check</a>
+        <a asp-controller="Appointment" asp-action="Check" role="button" class="btn btn-warning font-weight-bold form-control" id="hello0">Check</a>
     </div>
 </div>
 
@@ -62,7 +67,7 @@
                 <td>@item.dname</td>
                 <td>@item.dspeciality</td>
                 <td>@item.droomno</td>
-                <td><a class="btn btn-primary" asp-controller="TempViewDProfile" asp-action="Index" >Profile</a>  <a class="btn btn-success text-warning" asp-controller="Appointment" asp-action="ApptView">Book</a></td>
+                <td><a class="btn btn-primary" asp-controller="Profile" asp-action="Index" asp-route-did="@item.did">Profile</a>  <a class="btn btn-success text-warning" asp-controller="Appointment" asp-action="ApptView">Book</a></td>
             </tr>
         }
     </tbody>
