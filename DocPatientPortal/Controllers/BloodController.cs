@@ -45,11 +45,11 @@ namespace DocPatientPortal.Controllers
         {
             var dataset = dal.Users.Find(pid);
             ViewBag.UpdateData = dataset;
+            return View();//Update vanne view banaune.
             //update ko lagi euta form banaune data varine.
             //index ko text box ma value = @ViewBag.Data.pname
             //index ko text box ma value = @ViewBag.Data.paddress
             //index ko text box ma value = @ViewBag.Data.pblood
-            return View();//Update vanne view banaune.
         }
         #endregion
         #region UpdateData
@@ -58,6 +58,7 @@ namespace DocPatientPortal.Controllers
         public IActionResult UpdateData(User users)
         {
             dal.Users.Update(users);
+            
             dal.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -8,6 +8,7 @@ using System.IO;
 using System.Threading.Tasks;
 using DocPatientPortal.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
 
 namespace DocPatientPortal.Controllers
 {
@@ -20,8 +21,12 @@ namespace DocPatientPortal.Controllers
         public IActionResult ApptBook()
         {
             ViewBag.speciality = new List<String> { "Bone", "Cardiac", "something" };
+
             selectUsers();
-            return View();
+            if (HttpContext.Session.GetString("Logged") == "true")
+                return View();
+            else
+                return RedirectToAction("Index","Login");
         }
 
 
