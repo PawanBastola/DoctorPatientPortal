@@ -13,5 +13,16 @@ namespace DocPatientPortal.Controllers
         {
             return View();
         }
+
+        public IActionResult Doctor_register()
+        {
+
+            return RedirectToAction("Register_message","SignUp");
+        }
+
+        public IActionResult Register_message()
+        {
+            return View();
+        }
     }
 }

@@ -25,7 +25,7 @@ namespace DocPatientPortal.Controllers
 
             #region IF admin role check
 
-            if (user_List.Count() == 1 && user_List[0].password.Equals(password) && user_List[0].role.Equals("admin"))
+            if (user_List.Count() == 1 && user_List[0].password.Equals(password) && user_List[0].role.Equals("admin") && user_List[0].status.Equals("active"))
             {
                 //admin role
                 //setting session using HttpContext
@@ -38,11 +38,12 @@ namespace DocPatientPortal.Controllers
             #endregion
             #region ELSE IF patient role check
 
-            else if (user_List.Count() == 1 && user_List[0].password.Equals(password) && user_List[0].role.Equals("patient"))
+            else if (user_List.Count() == 1 && user_List[0].password.Equals(password) && user_List[0].role.Equals("patient") && user_List[0].status.Equals("active"))
             {
                 HttpContext.Session.SetString("User", JsonConvert.SerializeObject(user_List[0])); //note argument should be in strings only.
                 HttpContext.Session.SetString("Logged", "true");
                 HttpContext.Session.SetString("password", password);
+                
                 //doctor role
                 return RedirectToAction("ApptBook", "Appointment");
             }
@@ -65,3 +66,8 @@ namespace DocPatientPortal.Controllers
 
     }
 }
+
+
+
+
+

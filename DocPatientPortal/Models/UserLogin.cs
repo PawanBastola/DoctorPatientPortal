@@ -19,15 +19,17 @@ namespace DocPatientPortal.Models
         [DataType(DataType.Password)]
         public string password { get; set; }
         public string role { get; set; }
+        public string status { get; set; }
 
 
         //creating the constructor
-        public UserLogin(int uid, String username, String password, String role)
+        public UserLogin(int uid, String username, String password, String role, String status)
         {
             this.uid = uid;
             this.username = username;
             this.password = password;
             this.role = role;
+            this.status = status;
         }
     }
 }

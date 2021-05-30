@@ -60,30 +60,35 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Full Name</label>
-                                    <input type="text" Class="form-control" Placeholder="Full Name">
+                                    <input type="text" Class="form-control" Placeholder="Full Name" name="d_full_name">
 
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Date Of Birth</label>
-                                    <input type="date" TextMode="Date" Class="form-control" />
+                                    <input type="date" TextMode="Date" Class="form-control" name="d_dob"/>
                                 </div>
                             </div>
                         </div>
 
-
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Contact Number</label>
-                                    <input type="number" TextMode="Number" Class="form-control" Placeholder="enter phone number" />
+                                    <input type="number" TextMode="Number" Class="form-control" Placeholder="enter phone number" name="d_contact"/>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Email Id</label>
-                                    <input type="email" ID="TextBox4" TextMode="Email" Class="form-control">
+                                    <input type="email" ID="TextBox4" TextMode="Email" Class="form-control" name="d_email">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Certificate</label>
+                                    <input type="file" Class="form-control" name="d_certificate">
                                 </div>
                             </div>
                         </div>
@@ -94,7 +99,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label>State</label>
-                                    <select Class="form-control">
+                                    <select Class="form-control" name="d_state">
 
                                         <option>select</option>
                                         <option>Province 1</option>
@@ -112,27 +117,61 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>City</label>
-                                    <input Placeholder="City" Class="form-control" />
+                                    <input Placeholder="City" Class="form-control" name="d_city"/>
                                 </div>
                             </div>
                             <div class="col-md-5">
                                 <div class="form-group">
                                     <label>Gender</label><br />
-                                    <input type="radio" name="gender" value="male"> Male &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <input type="radio" name="gender" value="female"> Female &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <input type="radio" name="gender" value="other"> Other
+                                    <input type="radio" name="d_gender" value="male"> Male &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <input type="radio" name="d_gender" value="female"> Female &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <input type="radio" name="d_gender" value="other"> Other
                                 </div>
                             </div>
                         </div>
 
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Full Address</label>
-                                    <input type="text" TextMode="MultiLine" placeholder="enter your full and precise address" Class="form-control">
+                                    <input type="text" TextMode="MultiLine" placeholder="enter your full and precise address" Class="form-control" name="d_full_address">
                                 </div>
                             </div>
 
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Blood Group</label>
+                                    <select Class="form-control" name="d_blood_group">
+
+                                        <option>select</option>
+                                        <option>A+</option>
+                                        <option>A-</option>
+                                        <option>O+</option>
+                                        <option>O-</option>
+                                        <option>AB+</option>
+                                        <option>AB-</option>
+
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Speciality</label>
+                                    <select Class="form-control" name="d_speciality">
+
+                                        <option>select</option>
+                                        <option>Anesthesiologists</option>
+                                        <option>Cardiologists</option>
+                                        <option>Dermatologists</option>
+                                        <option>Endocrinologists</option>
+                                        <option>Physicians</option>
+                                        <option>Gastroenterologists</option>
+
+
+                                    </select>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="row">
@@ -149,15 +188,16 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>User Name</label>
-                                    <input type="text" placeholder="choose a UserName" Class="form-control">
+                                    <input type="text" placeholder="choose a UserName" Class="form-control" name="username">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Password</label>
-                                    <input type="password" placeholder="enter your Password" Class="form-control">
+                                    <input type="password" placeholder="enter your Password" Class="form-control" name="password">
                                 </div>
                             </div>
+                            
                         </div>
 
                         <div class="row">
@@ -277,12 +317,32 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Full Address</label>
                                     <input type="text" TextMode="MultiLine" placeholder="enter your full and precise address" Class="form-control">
                                 </div>
                             </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Blood Group</label>
+                                    <select Class="form-control">
+
+                                        <option>select</option>
+                                        <option>A+</option>
+                                        <option>A-</option>
+                                        <option>O+</option>
+                                        <option>O-</option>
+                                        <option>AB+</option>
+                                        <option>AB-</option>
+
+
+                                    </select>
+                                </div>
+                            </div>
+
+                           
 
                         </div>
 

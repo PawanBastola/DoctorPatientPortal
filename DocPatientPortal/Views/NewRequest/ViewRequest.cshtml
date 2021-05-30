@@ -1,0 +1,22 @@
+﻿@page
+@model DocPatientPortal.Views.NewRequest.ViewRequestModel
+@{
+    Layout = "_LayoutAdmin";
+}
+
+<p>@ViewBag.this_doctor.d_id</p>
+<p>@ViewBag.this_doctor.d_full_name</p>
+<p>@ViewBag.this_doctor.d_dob</p>
+<p>@ViewBag.this_doctor.d_contact</p>
+<p>@ViewBag.this_doctor.d_email</p>
+<p>@ViewBag.this_doctor.d_certificate</p>
+<p>@ViewBag.this_doctor.d_state</p>
+<p>@ViewBag.this_doctor.d_city</p>
+<p>@ViewBag.this_doctor.d_full_address</p>
+<p>@ViewBag.this_doctor.d_gender</p>
+<p>@ViewBag.this_doctor.d_blood_group</p>
+<p>@ViewBag.this_doctor.d_speciality</p>
+
+<pre>you can also approve and delete from here</pre>
+
+<a class="btn btn-success" asp-controller="NewRequest" asp-action="" asp-route-rid="s">Approve</a> <a class="btn btn-danger" asp-controller="NewRequest" asp-action="Deny" asp-route-rid="s">Deny</a>

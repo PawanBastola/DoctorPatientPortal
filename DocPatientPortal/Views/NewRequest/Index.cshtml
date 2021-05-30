@@ -1,0 +1,45 @@
+﻿@page
+@model DocPatientPortal.Views.NewRequest.IndexModel
+@{
+    Layout = "_LayoutAdmin";
+}
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.datatablejquery').DataTable();
+
+        });
+    </script>
+}
+<br />
+<table class="table table-hover datatablejquery">
+    <thead class="thead-dark">
+
+        <tr>
+
+            <th>S.N.</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Action</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var doctor_det in ViewBag.doctors)
+        {
+
+        <tr>
+
+            <td>@doctor_det.d_id</td>
+            <td>@doctor_det.d_full_name</td>
+            <td>@doctor_det.d_full_address</td>
+            <td>@doctor_det.d_contact</td>
+            <td><a asp-controller="NewRequest" asp-action="Approve" asp-route-id="@doctor_det.d_id" class ="btn btn-success">Approve</a><a asp-controller="NewRequest" asp-action="Deny" asp-route-id="@doctor_det.d_id" class="btn btn-danger">deny</a><a asp-controller="NewRequest" asp-action="ViewRequest" asp-route-id="@doctor_det.d_id" class="btn btn-primary">detail</a></td>
+        </tr>
+        }
+    
+    </tbody>
+</table>
