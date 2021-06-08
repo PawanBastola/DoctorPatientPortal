@@ -55,7 +55,7 @@
                     </div>
 
 
-                    <form asp-action="" asp-controller="">
+                    <form method="post" enctype="multipart/form-data" asp-controller="SignUp" asp-action="Doctor_register">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -67,7 +67,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Date Of Birth</label>
-                                    <input type="date" TextMode="Date" Class="form-control" name="d_dob"/>
+                                    <input type="date" TextMode="Date" Class="form-control" name="d_dob" />
                                 </div>
                             </div>
                         </div>
@@ -76,7 +76,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Contact Number</label>
-                                    <input type="number" TextMode="Number" Class="form-control" Placeholder="enter phone number" name="d_contact"/>
+                                    <input type="number" TextMode="Number" Class="form-control" Placeholder="enter phone number" name="d_contact" />
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -88,7 +88,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Certificate</label>
-                                    <input type="file" Class="form-control" name="d_certificate">
+                                    <input type="file" Class="form-control" name="d_certificate" accept="image/*">
                                 </div>
                             </div>
                         </div>
@@ -117,7 +117,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>City</label>
-                                    <input Placeholder="City" Class="form-control" name="d_city"/>
+                                    <input Placeholder="City" Class="form-control" name="d_city" />
                                 </div>
                             </div>
                             <div class="col-md-5">
@@ -184,6 +184,8 @@
 
                         </div>
 
+
+
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -197,7 +199,7 @@
                                     <input type="password" placeholder="enter your Password" Class="form-control" name="password">
                                 </div>
                             </div>
-                            
+
                         </div>
 
                         <div class="row">
@@ -206,13 +208,13 @@
                                     <input type="submit" role="button" class="btn btn-success btn-block btn-lg" value="Sign Up">
 
                                 </div>
-                </div>
-            </div>
+                            </div>
+                        </div>
                     </form>
                     <a class="iam_patient" href="#">I am a patient →</a>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
     </div>
 
 </div>
@@ -342,7 +344,7 @@
                                 </div>
                             </div>
 
-                           
+
 
                         </div>
 
@@ -380,7 +382,7 @@
                             </div>
                         </div>
                     </form>
-                                <a class="iam_doctor" href="#">I am a Doctor →</a>
+                    <a class="iam_doctor" href="#">I am a Doctor →</a>
                 </div>
             </div>
         </div>

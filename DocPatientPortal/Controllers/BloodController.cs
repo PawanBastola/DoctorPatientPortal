@@ -83,6 +83,7 @@ namespace DocPatientPortal.Controllers
                 var data = dal.Users.ToList();
                 //var result = data.Where(x=>x.pname.Contains("A"));
                 ViewBag.Data = data;
+                
 
 
 

@@ -39,12 +39,34 @@ namespace DocPatientPortal.Controllers
             ViewBag.this_doctor = find_doctor;
             return View();
         }
-        public IActionResult Approve(String abc)
+        public IActionResult Approve(String username)
         {
+            List<UserLogin> user = dal.userlogins.Where(x=>x.username.Equals(username)).ToList<UserLogin>();
+            
+            UserLogin logindata = user[0];
+
+            
+            
+            logindata.status = "Active";
+            dal.userlogins.Update(logindata);
+            dal.SaveChanges();
+            
             return RedirectToAction("Index","NewRequest");
         }
-        public IActionResult Deny(String abc)
+        public IActionResult Deny(String username)
         {
+            List<UserLogin> user = dal.userlogins.Where(x => x.username.Equals(username)).ToList<UserLogin>();
+            
+            UserLogin logindata = user[0];
+
+            logindata.status = "Suspended";
+            dal.userlogins.Update(logindata);
+            dal.SaveChanges();
+
+
+
+            
+
             return RedirectToAction("Index", "NewRequest");
         }
 

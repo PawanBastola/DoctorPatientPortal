@@ -23,13 +23,6 @@ namespace DocPatientPortal.Models
 
 
         //creating the constructor
-        public UserLogin(int uid, String username, String password, String role, String status)
-        {
-            this.uid = uid;
-            this.username = username;
-            this.password = password;
-            this.role = role;
-            this.status = status;
-        }
+        
     }
 }

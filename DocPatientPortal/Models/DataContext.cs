@@ -25,7 +25,7 @@ namespace DocPatientPortal.Models
 
         //Need to register your models here
         // public DbSet<Product> Products { get; set; }
-        public DbSet<User> Users { get; set; }
+        public DbSet<User> Users { get; set; }//this is for blood insert update and delete
         public DbSet<Doctor_Details> Doctors { get; set; }
         public DbSet<UserLogin> userlogins { get; set; }
         public DbSet<Appointment> appointmentss { get; set; }

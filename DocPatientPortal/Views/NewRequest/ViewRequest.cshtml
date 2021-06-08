@@ -16,7 +16,8 @@
 <p>@ViewBag.this_doctor.d_gender</p>
 <p>@ViewBag.this_doctor.d_blood_group</p>
 <p>@ViewBag.this_doctor.d_speciality</p>
+<p>@ViewBag.this_doctor.d_username</p>
 
 <pre>you can also approve and delete from here</pre>
 
-<a class="btn btn-success" asp-controller="NewRequest" asp-action="" asp-route-rid="s">Approve</a> <a class="btn btn-danger" asp-controller="NewRequest" asp-action="Deny" asp-route-rid="s">Deny</a>
+<a class="btn btn-success" asp-controller="NewRequest" asp-action="Approve" asp-route-username=@ViewBag.this_doctor.d_username>Approve</a> <a class="btn btn-danger" asp-controller="NewRequest" asp-action="Deny" asp-route-username=@ViewBag.this_doctor.d_username>Deny</a>

@@ -37,7 +37,7 @@
             <td>@doctor_det.d_full_name</td>
             <td>@doctor_det.d_full_address</td>
             <td>@doctor_det.d_contact</td>
-            <td><a asp-controller="NewRequest" asp-action="Approve" asp-route-id="@doctor_det.d_id" class ="btn btn-success">Approve</a><a asp-controller="NewRequest" asp-action="Deny" asp-route-id="@doctor_det.d_id" class="btn btn-danger">deny</a><a asp-controller="NewRequest" asp-action="ViewRequest" asp-route-id="@doctor_det.d_id" class="btn btn-primary">detail</a></td>
+            <td><a asp-controller="NewRequest" asp-action="Approve" asp-route-username="@doctor_det.d_username" class ="btn btn-success">Approve</a><a asp-controller="NewRequest" asp-action="Deny" asp-route-username="@doctor_det.d_username" class="btn btn-danger">deny</a><a asp-controller="NewRequest" asp-action="ViewRequest" asp-route-id="@doctor_det.d_id" class="btn btn-primary">detail</a></td>
         </tr>
         }
     
