@@ -14,22 +14,22 @@
             </div>
             <div class="content">
                 <div class="leftContent">
-                    <p>Name: @ViewBag.ViewProfile.dname</p>
-                    <p>Gender: @ViewBag.ViewProfile.dgender</p>
+                    <p>Name: @ViewBag.ViewProfile.d_full_name</p>
+                    <p>Gender: @ViewBag.ViewProfile.d_gender</p>
                     <!--<p>Blood gp.: O+ve</p>
                     <p>DOB: 1999 A.D.</p>-->
-                    <p>Address: @ViewBag.ViewProfile.daddress</p>
+                    <p>Address: @ViewBag.ViewProfile.d_full_address</p>
                     <p>Nationality: Nepalese</p>
                     <!--<p>Weight: 55 kg.</p>
                     <p>Height: 5.5"</p>-->
-                    <p>Contact: @ViewBag.ViewProfile.dnumber</p>
-                    <p>Email: @ViewBag.ViewProfile.dmail</p>
-                    <p>Degree: @ViewBag.ViewProfile.dacademicqual</p>
+                    <p>Contact: @ViewBag.ViewProfile.d_contact</p>
+                    <p>Email: @ViewBag.ViewProfile.d_email</p>
+                    <p>Speciality: @ViewBag.ViewProfile.d_speciality</p>
 
 
                 </div>
                 <div class="rightContent">
-                    <img src="~/image/RanjanBirthday.jpg" alt="profilepic" />
+                    <img src="@ViewBag.ViewProfile.d_certificate" alt="profilepic" />
 
                 </div>
 

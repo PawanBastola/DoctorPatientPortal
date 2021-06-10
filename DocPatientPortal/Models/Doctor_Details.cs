@@ -17,7 +17,7 @@ namespace DocPatientPortal.Models
         public DateTime d_dob { get; set; }
         public String d_contact { get; set; }
         public String d_email { get; set; }
-        public string d_certificate { get; set; }
+        public String d_certificate { get; set; }
         public String d_state { get; set; }
         public String d_city { get; set; }
         public String d_full_address { get; set; }

@@ -40,12 +40,24 @@ namespace DocPatientPortal.Controllers
 
             else if (user_List.Count() == 1 && user_List[0].password.Equals(password) && user_List[0].role.Equals("patient") && user_List[0].status.Equals("Active"))
             {
-                HttpContext.Session.SetString("User", JsonConvert.SerializeObject(user_List[0])); //note argument should be in strings only.
+            /*    HttpContext.Session.SetString("User", JsonConvert.SerializeObject(user_List[0])); //note argument should be in strings only.
                 HttpContext.Session.SetString("Logged", "true");
                 HttpContext.Session.SetString("password", password);
-                
+            */    
                 //doctor role
                 return RedirectToAction("ApptBook", "Appointment");
+            }
+            #endregion
+            #region ELSE IF doctor role check
+
+            else if (user_List.Count() == 1 && user_List[0].password.Equals(password) && user_List[0].role.Equals("doctor") && user_List[0].status.Equals("Active"))
+            {
+                /*HttpContext.Session.SetString("User", JsonConvert.SerializeObject(user_List[0])); //note argument should be in strings only.
+                HttpContext.Session.SetString("Logged", "true");
+                HttpContext.Session.SetString("password", password);*/
+
+                //doctor role
+                return RedirectToAction("Index", "Doc_Appointments");//doctor page to insert
             }
             #endregion
             else

@@ -54,7 +54,7 @@
 
             <th>Doctor</th>
             <th>Speciality</th>
-            <th>Room no.</th>
+            <th>City</th>
             <th>Action</th>
 
         </tr>
@@ -64,10 +64,10 @@
         {
             <tr class="text-lg-center" style="font-size:larger;">
 
-                <td>@item.dname</td>
-                <td>@item.dspeciality</td>
-                <td>@item.droomno</td>
-                <td><a class="btn btn-primary" asp-controller="Profile" asp-action="Index" asp-route-did="@item.did">Profile</a>  <a class="btn btn-success text-warning" asp-controller="Appointment" asp-action="ApptView">Book</a></td>
+                <td>@item.d_full_name</td>
+                <td>@item.d_speciality</td>
+                <td>@item.d_city</td>
+                <td><a class="btn btn-primary" asp-controller="Profile" asp-action="Index" asp-route-did="@item.d_id">Profile</a>  <a class="btn btn-success text-warning" asp-controller="Appointment" asp-action="ApptView">Book</a></td>
             </tr>
         }
     </tbody>

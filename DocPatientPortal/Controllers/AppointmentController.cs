@@ -23,10 +23,11 @@ namespace DocPatientPortal.Controllers
             ViewBag.speciality = new List<String> { "Bone", "Cardiac", "something" };
 
             selectUsers();
-            if (HttpContext.Session.GetString("Logged") == "true")
+            /*if (HttpContext.Session.GetString("Logged") == "true")
                 return View();
             else
-                return RedirectToAction("Index","Login");
+                return RedirectToAction("Index","Login");*/
+            return View();
         }
 
 

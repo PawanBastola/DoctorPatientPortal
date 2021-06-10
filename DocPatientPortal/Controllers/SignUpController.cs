@@ -54,17 +54,17 @@ namespace DocPatientPortal.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Doctor_register(DoctorSignupViewModel viewmodel, IFormFile d_certificate)
+        public async Task<IActionResult> Doctor_register(DoctorSignupViewModel viewmodel)
         {
 
             var user = dal.userlogins.Where(x => x.username.Equals(viewmodel.username)).ToList();
             int count = user.Count();
-            
+            //String url = "";
 
           
 
                 string folder = "image/certificate/";
-                viewmodel.d_certificate = await UploadImage(folder, d_certificate);
+               /* url = await UploadImage(folder, viewmodel.d_certificate);*/
                 
 
           
@@ -84,7 +84,7 @@ namespace DocPatientPortal.Controllers
                 d_dob = viewmodel.d_dob,
                 d_contact = viewmodel.d_contact,
                 d_email = viewmodel.d_email,
-                d_certificate = viewmodel.d_certificate,
+                d_certificate = await UploadImage(folder, viewmodel.d_certificate),
                 d_state = viewmodel.d_state,
                 d_city = viewmodel.d_city,
                 d_full_address = viewmodel.d_full_address,
