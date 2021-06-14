@@ -24,6 +24,6 @@ namespace DocPatientPortal.Models
         public String d_gender { get; set; }
         public String d_blood_group { get; set; }
         public String d_speciality { get; set; }
-        public String d_username { get; set; }
+        public String d_username { get; set; }  
     }
 }

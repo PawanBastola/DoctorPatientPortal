@@ -19,11 +19,11 @@ namespace DocPatientPortal.Controllers
         }
         #region uploadimage functions
         
-        public async Task<string> UploadImage(string folderpath, IFormFile d_certificate)
+        public async Task<string> UploadImage(string folderpath, IFormFile file)
         {
-            folderpath += Guid.NewGuid().ToString() + "_" + d_certificate.FileName;
+            folderpath += Guid.NewGuid().ToString() + "_" + file.FileName;
             string serverFolder = Path.Combine(_webHostEnvironment.WebRootPath, folderpath);
-            await d_certificate.CopyToAsync(new FileStream(serverFolder, FileMode.Create));
+            await file.CopyToAsync(new FileStream(serverFolder, FileMode.Create));
             return "/" + folderpath;
         }
         #endregion
@@ -57,8 +57,8 @@ namespace DocPatientPortal.Controllers
         public async Task<IActionResult> Doctor_register(DoctorSignupViewModel viewmodel)
         {
 
-            var user = dal.userlogins.Where(x => x.username.Equals(viewmodel.username)).ToList();
-            int count = user.Count();
+            //var user = dal.userlogins.Where(x => x.username.Equals(viewmodel.username)).ToList();
+            //int count = user.Count();
             //String url = "";
 
           
@@ -105,8 +105,46 @@ namespace DocPatientPortal.Controllers
 
 
         }
+        [HttpPost]
+        public async Task<IActionResult> Patient_register(Patient_Details patient, string password, string username, IFormFile photo)
+        {
+            //here we haven't used viewmodel for user and patient_details model
+            //instead we have taken password, username, file argument in this function
+            string folder = "image/profile_pic/";
 
 
+
+            UserLogin login_patient = new UserLogin()
+            {
+
+                username = username,
+                password = password,
+                role = "patient",
+                status = "Active"
+            };
+
+            Patient_Details patient_obj = new Patient_Details()
+            {
+                p_fullname = patient.p_fullname,
+                p_dob = patient.p_dob,
+                p_contact= patient.p_contact,
+                p_email = patient.p_email,
+                p_photo = await UploadImage(folder, photo),//note: p_photo should be of (S)tring type not (s)tring type. if string is used the file name wont be trimmed.
+                p_state = patient.p_state,
+                p_city = patient.p_city,
+                p_gender= patient.p_gender,
+                p_fulladdress = patient.p_fullname,
+                p_blood = patient.p_blood,
+                p_username = username
+                
+
+            };
+
+            dal.userlogins.Add(login_patient);
+            dal.Patients.Add(patient_obj);
+            dal.SaveChanges();
+            return RedirectToAction("Index","Login");
+        }
 
         public IActionResult Register_message()
         {
