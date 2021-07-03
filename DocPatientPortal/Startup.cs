@@ -67,7 +67,7 @@ namespace DocPatientPortal
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Login}/{action=Index}/{id?}");
+                    pattern: "{controller=Teacher}/{action=Index}/{id?}");
             });
 
             //using json file

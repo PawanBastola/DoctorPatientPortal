@@ -18,7 +18,7 @@ namespace DocPatientPortal.Controllers
             _webHostEnvironment = webHostEnvironment;
         }
         #region uploadimage functions
-        
+
         public async Task<string> UploadImage(string folderpath, IFormFile file)
         {
             folderpath += Guid.NewGuid().ToString() + "_" + file.FileName;
@@ -61,13 +61,13 @@ namespace DocPatientPortal.Controllers
             //int count = user.Count();
             //String url = "";
 
-          
 
-                string folder = "image/certificate/";
-               /* url = await UploadImage(folder, viewmodel.d_certificate);*/
-                
 
-          
+            string folder = "image/certificate/";
+            /* url = await UploadImage(folder, viewmodel.d_certificate);*/
+
+
+
             UserLogin login = new UserLogin()
             {
 
@@ -100,7 +100,6 @@ namespace DocPatientPortal.Controllers
             dal.Doctors.Add(doctors);
             dal.SaveChanges();
 
-
             return RedirectToAction("Register_message", "SignUp");
 
 
@@ -111,8 +110,6 @@ namespace DocPatientPortal.Controllers
             //here we haven't used viewmodel for user and patient_details model
             //instead we have taken password, username, file argument in this function
             string folder = "image/profile_pic/";
-
-
 
             UserLogin login_patient = new UserLogin()
             {
@@ -127,23 +124,23 @@ namespace DocPatientPortal.Controllers
             {
                 p_fullname = patient.p_fullname,
                 p_dob = patient.p_dob,
-                p_contact= patient.p_contact,
+                p_contact = patient.p_contact,
                 p_email = patient.p_email,
                 p_photo = await UploadImage(folder, photo),//note: p_photo should be of (S)tring type not (s)tring type. if string is used the file name wont be trimmed.
                 p_state = patient.p_state,
                 p_city = patient.p_city,
-                p_gender= patient.p_gender,
+                p_gender = patient.p_gender,
                 p_fulladdress = patient.p_fullname,
                 p_blood = patient.p_blood,
                 p_username = username
-                
+
 
             };
 
             dal.userlogins.Add(login_patient);
             dal.Patients.Add(patient_obj);
             dal.SaveChanges();
-            return RedirectToAction("Index","Login");
+            return RedirectToAction("Index", "Login");
         }
 
         public IActionResult Register_message()

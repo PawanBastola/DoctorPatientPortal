@@ -31,6 +31,10 @@ namespace DocPatientPortal.Models
         public DbSet<UserLogin> userlogins { get; set; }
         public DbSet<Appointment> appointmentss { get; set; }
 
+        //binod module
+        public DbSet<Lvl_Table> levels { get; set; }
+        public DbSet<Teacher_Table> teachers { get; set; }
+
 
 
         //Need to register your models here

@@ -64,4 +64,5 @@ login page.
 sign up page.
 	signup for doctor
 	Signup for patient
-
+	
+Booking module

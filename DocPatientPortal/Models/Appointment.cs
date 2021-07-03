@@ -10,7 +10,7 @@ namespace DocPatientPortal.Models
     [Table("appointment")]
     public class Appointment
     {
-        [Key]
+        [Key] 
         public int aid { get; set; }
         public int uid { get; set; }
         public int doc_id { get; set; }
