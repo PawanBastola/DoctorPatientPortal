@@ -1,20 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DocPatientPortal.Models
+namespace DocPatientPortal.Models.ViewModel
 {
-    [Table("appointment")]
-    public class Appointment
+    public class ViewModelAppointment
     {
-        [Key] 
         public int aid { get; set; }
         public int uid { get; set; }
         public int doc_id { get; set; }
+        public String doc_name { get; set; }
+        public String doc_speciality { get; set; }
         public DateTime adate { get; set; }
-        
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +11,29 @@ namespace DocPatientPortal.Controllers
     {
         public IActionResult OrgDonate()
         {
-            return View();
+            if (HttpContext.Session.GetString("Logged") == "true")
+            {
+
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
         }
         public IActionResult OrgSearch()
         {
-            return View();
+
+
+            if (HttpContext.Session.GetString("Logged") == "true")
+            {
+
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
         }
 
     }

@@ -9,41 +9,45 @@ using System.Threading.Tasks;
 using DocPatientPortal.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
+using DocPatientPortal.Models.ViewModel;
 
 namespace DocPatientPortal.Controllers
 {
     public class AppointmentController : Controller
     {
         DataContext dal = new DataContext();
-
+        DateTime date;
 
         //apptBook view matrai ho yo.
         public IActionResult ApptBook()
         {
-            ViewBag.speciality = new List<String> { "Bone", "Cardiac", "something" };
 
-            selectUsers();
-            /*if (HttpContext.Session.GetString("Logged") == "true")
+           
+            int user_id = JsonConvert.DeserializeObject<UserLogin>(HttpContext.Session.GetString("User")).uid;///getting from session
+
+            if (HttpContext.Session.GetString("Logged") == "true")
+            {
+                ViewBag.speciality = new List<String> { "Bone", "Cardiac", "something" };
+                SelectAllDoctors();
                 return View();
+            }
             else
-                return RedirectToAction("Index","Login");*/
-            return View();
+                return RedirectToAction("Index", "Login");
+            
         }
 
+       
 
-        #region SelectCode
-        public IActionResult selectUsers()
+        #region SelectCode All Doctors
+        public IActionResult SelectAllDoctors()
         {
             try
             {
-
                 //bring the data of search BOX and query from LINQ.=>  jquery ...//datatable.
                 var data = dal.Doctors.ToList();
                 //var result = data.Where(x=>x.pname.Contains("A"));
                 ViewBag.Data = data;
-
-
-
             }
             catch (Exception ex)
             {
@@ -59,16 +63,24 @@ namespace DocPatientPortal.Controllers
 
         //quering for available doctor
         //To Be Continue...
-        public IActionResult Check(String doc_spec, DateTime date, DateTime time)// multiple constraints query is passed eg. Doc-speciality, Date, Time.
+        
+        public void getDate(DateTime date)
+        {
+            this.date = date;
+        }
+        //-------------------------------WORKING HERE-----------------------------------------------------------------------
+
+
+       
+        [HttpPost]
+        public IActionResult Check(DateTime date)// multiple constraints query is passed eg. Doc-speciality, Date, Time.
         {
 
             try
             {
                 /*DataContext dal = new DataContext();*/
-                var dataset = dal.Doctors.Find(doc_spec, date, time);
+                var dataset = dal.Doctors.Find( date);
                 ViewBag.available_doc = dataset;
-
-
             }
             catch (Exception ex)
             {
@@ -78,12 +90,46 @@ namespace DocPatientPortal.Controllers
 
             return RedirectToAction("ApptBook");
         }
-
-
-
         public IActionResult ApptView()
         {
-            return View();
+           /* if (HttpContext.Session.GetString("Logged")=="true")
+            {
+
+            }
+            else
+            {
+                return RedirectToAction("Index","Login");
+            }*/
+            //checking if session is set
+
+            if (HttpContext.Session.GetString("Logged")=="true")
+            {
+                
+
+                try{
+                    //id from session
+                    int uid = JsonConvert.DeserializeObject<UserLogin>(HttpContext.Session.GetString("User")).uid;
+
+                    //list of appointment of user
+                    List<Appointment> appointmentList = dal.appointmentss.Where(x => x.uid.Equals(uid)).ToList<Appointment>();
+                    List<Doctor_Details> doctorList = dal.Doctors.ToList<Doctor_Details>();
+                    ViewBag.appointments = appointmentList;
+                    ViewBag.doctorList = doctorList;
+                }
+                catch (Exception error)
+                {
+                    Console.WriteLine(error);
+                }
+
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            //getting user id from session
+           
+           
         }
         public IActionResult ApptCancel()
         {

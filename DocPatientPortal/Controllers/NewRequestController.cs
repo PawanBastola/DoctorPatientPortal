@@ -1,4 +1,5 @@
 ﻿using DocPatientPortal.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -13,8 +14,16 @@ namespace DocPatientPortal.Controllers
 
         public IActionResult Index()
         {
+            if (HttpContext.Session.GetString("Logged") == "true")
+            {
             selectdoctor();
             return View();
+
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
         }
 
         #region selectdoctor
@@ -35,9 +44,17 @@ namespace DocPatientPortal.Controllers
 
         public IActionResult ViewRequest(int id)
         {
+            if (HttpContext.Session.GetString("Logged") == "true")
+            {
             var find_doctor = dal.Doctors.Find(id);
             ViewBag.this_doctor = find_doctor;
             return View();
+
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
         }
         public IActionResult Approve(String username)
         {

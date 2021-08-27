@@ -13,6 +13,7 @@ namespace DocPatientPortal.Models
         [Key]
         public int uid { get; set; }
 
+
         [Required]
         public string username { get; set; }
         [Required]

@@ -1,6 +1,37 @@
 ﻿@page
 @model DocPatientPortal.Views.Ajax.IndexModel
 @{
+    Layout = "_LayoutPatient";
     //html code for ajaxcontroller.
+}
+
+<input type="submit" class="btn btn-primary" role="button" onclick="Btnclick()" />
+<input type ="text" id="setText"/>
+<input type ="text" id="setTextB"/>
+@section Scripts{ 
+<script>
+
+    function Btnclick() {
+        $.ajax({
+            url: '@Url.Action("newFunction", "Ajax")',
+            type: "GET",
+            dataType:"text",
+            success: function (data) {
+                parsedata = JSON.parse(data);
+                console.log(parsedata);
+
+                $('#setText').val(parsedata[0]);
+                $('#setTextB').val(parsedata[1]);
+
+
+
+            },
+            error: function (err) {
+                console.error(err);
+            }
+        });
+    }
+
+</script>
 }
 

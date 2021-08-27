@@ -53,6 +53,10 @@ namespace DocPatientPortal.Controllers
             return exist;
         }
 
+
+        /// <summary>
+        /// ---------Doctor signup card----------
+        /// </summary>     
         [HttpPost]
         public async Task<IActionResult> Doctor_register(DoctorSignupViewModel viewmodel)
         {
@@ -104,6 +108,13 @@ namespace DocPatientPortal.Controllers
 
 
         }
+
+
+        /// <summary>
+        /// Patient Signup Card
+        /// </summary>
+        
+        
         [HttpPost]
         public async Task<IActionResult> Patient_register(Patient_Details patient, string password, string username, IFormFile photo)
         {

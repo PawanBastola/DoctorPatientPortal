@@ -29,13 +29,13 @@ namespace DocPatientPortal.Models
         public DbSet<Doctor_Details> Doctors { get; set; }
         public DbSet<Patient_Details> Patients { get; set; }
         public DbSet<UserLogin> userlogins { get; set; }
-        public DbSet<Appointment> appointmentss { get; set; }
+        
 
         //binod module
         public DbSet<Lvl_Table> levels { get; set; }
         public DbSet<Teacher_Table> teachers { get; set; }
 
-
+        public DbSet<Appointment> appointmentss { get; set; }
 
         //Need to register your models here
         // public DbSet<Product> Products { get; set; }

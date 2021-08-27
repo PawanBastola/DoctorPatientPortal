@@ -16,31 +16,29 @@
             <th>Doctor</th>
             <th>Speciality</th>
             <th>Date</th>
-            <th>Time</th>
             <th>Action</th>
 
         </tr>
     </thead>
     <tbody>
-        <tr class="text-lg-center" style="font-size:larger;">
+        @foreach (var appointment in ViewBag.appointments)
+        {
+            @foreach (var dd in ViewBag.doctorList)
+            {
+                if (dd.d_id == appointment.doc_id)
+                {
+                    <tr class="text-lg-center" style="font-size:larger;">
 
-            <td>3456</td>
-            <td>hari</td>
-            <td>Heart</td>
-            <td>2/1/2021</td>
-            <td>12:00 am</td>
-            <td><a class="btn btn-danger">Cancel</a></td>
-        </tr>
-        <tr class="text-lg-center" style="font-size:larger;">
-            <td>3467</td>
-            <td>shyam</td>
-            <td>Ear</td>
-            <td>2/4/2021</td>
-            <td>9:00 am</td>
-            <td><a class="btn btn-danger">Cancel</a></td>
+                        <td>@appointment.aid</td>
+                        <td>@appointment.uid</td>
+                        <td>@appointment.doc_id</td>
+                        <td>@dd.d_full_name</td>
+                        <td>@appointment.adate.ToString("dd/MM/yyyy")</td>
+                        <td><a class="btn btn-danger">Cancel</a></td>
+                    </tr>
+                }
+            }
+        }
 
-        </tr>
-       
-      
-    </tbody>
+        </tbody>
 </table>
