@@ -12,81 +12,103 @@
 <h1> @ViewBag.email </h1>
 
 @section Scripts{
-<script>
+    <script type="text/javascript">
 
-    var today = new Date();
-    var day = today.getDate();
-    var mm = today.getMonth() + 1; //January is 0!
-    var yyyy = today.getFullYear();
-    if (day < 10) {
-        day = '0' + day
+        var today = new Date();
+        var day = today.getDate();
+        var mm = today.getMonth() + 1; //January is 0!
+        var yyyy = today.getFullYear();
+        if (day < 10) {
+            day = '0' + day
+        }
+        if (mm < 10) {
+            mm = '0' + mm
+        }
+
+        today = yyyy + '-' + mm + '-' + day;
+
+        document.getElementById("datefield").setAttribute("min", today);
+    </script>
     }
-    if (mm < 10) {
-        mm = '0' + mm
-    }
 
-    today = yyyy + '-' + mm + '-' + day;
-    
-    document.getElementById("datefield").setAttribute("min", today);
-</script>
-
- }
-
-<form method="post" asp-controller="Appointment" asp-action="Check">
-
-    <div class="form-group row">
-        <label for="example-text-input" class="col-2 col-form-label">Category</label>
-        <div class="col-10">
-
-            <select class="form-select" aria-label="Default select example" name="doc_spec">
-                <option selected>Bone</option>
-                <option value="cardiac">Cardiac</option>
-                <option value="skin">Skin</option>
-                <option value="occult">Occult</option>
-            </select>
-        </div>
-    </div>
-    <!--Date Module-->
-    <div class="form-group row">
-        <label for="example-date-input" class="col-2 col-form-label">Date</label>
-        <div class="col-10">
-            <input class="form-control" type="date" placeholder="yyyy-mm-dd" min='1899-01-01' id="datefield" name="date">
-        </div>
-    </div>
-    <!--END Date Module -->
-    <!--Check Button-->
-    <div class="form-group row">
-        <label for="" class="col-2 col-form-label"></label>
-        <div class="col-10">
-            <input type="submit" class="btn btn-warning font-weight-bold form-control" id="hello0" value="Check">
-        </div>
-    </div>
-
-    <table class="table table-dark table-hover">
-        <thead>
-
-            <tr class="text-lg-center">
-
-                <th>Doctor</th>
-                <th>Speciality</th>
-                <th>City</th>
-                <th>Action</th>
-
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in ViewBag.Data)
-            {
-                <tr class="text-lg-center" style="font-size:larger;">
-
-                    <td>@item.d_full_name</td>
-                    <td>@item.d_speciality</td>
-                    <td>@item.d_city</td>
-                    <td><a class="btn btn-primary" asp-controller="Profile" asp-action="Index" asp-route-did="@item.d_id">Profile</a>  <a class="btn btn-success text-warning" asp-controller="Appointment" asp-action="Check">Book</a></td>
-                </tr>
+    <script type="text/javascript">
+        function btnclick() {
+            var mydata = $("#datefield").val();
+                $.ajax({
+                    url:"/Appointment/Check",
+                    type: "Get",
+                    dataType: "text",
+                    data: mydata,
+                    contentType: false,
+                    processData: false,
+                    cache: false,
+                    success: function (data) {
+                        console.log("hello");
+                        console.log(data);
+                   },
+                    error: function () { alert("not working ");}
+                });
             }
-        </tbody>
-    </table>
-</form>
+    </script>
+
+
+
+
+
+<div class="form-group row">
+    <label for="example-text-input" class="col-2 col-form-label">Category</label>
+    <div class="col-10">
+
+        <select class="form-select" aria-label="Default select example" name="doc_spec">
+            <option selected>Bone</option>
+            <option value="cardiac">Cardiac</option>
+            <option value="skin">Skin</option>
+            <option value="occult">Occult</option>
+        </select>
+    </div>
+</div>
+<!--Date Module-->
+<div class="form-group row">
+    <label for="example-date-input" class="col-2 col-form-label">Date</label>
+    <div class="col-10">
+        <input class="form-control" type="date" placeholder="yyyy-mm-dd" min='1899-01-01' id="datefield" name="adate">
+    </div>
+</div>
+<!--END Date Module -->
+<!--Check Button-->
+<div class="form-group row">
+    <label for="" class="col-2 col-form-label"></label>
+    <div class="col-10">
+        <input type="submit" class="btn btn-warning font-weight-bold form-control" onclick="btnclick()" id="checkid" value="Check">
+    </div>
+</div>
+
+<table class="table table-dark table-hover">
+    <thead>
+
+        <tr class="text-lg-center">
+
+            <th>Doctor</th>
+            <th>Speciality</th>
+            <th>City</th>
+            <th>Action</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.Data)
+        {
+            <tr class="text-lg-center" style="font-size:larger;">
+
+                <td>@item.d_full_name</td>
+                <td>@item.d_speciality</td>
+                <td>@item.d_city</td>
+                <td><a class="btn btn-primary" asp-controller="Profile" asp-action="Index" asp-route-did="@item.d_id">Profile</a>  <a class="btn btn-success text-warning" asp-controller="Appointment" asp-action="Insert" asp-route-did="@item.d_id">Book</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
 
 <a class="btn-danger" asp-controller="Login" asp-action="Logout">Logout</a>

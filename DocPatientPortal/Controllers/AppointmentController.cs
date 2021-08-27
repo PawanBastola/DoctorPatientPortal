@@ -17,7 +17,7 @@ namespace DocPatientPortal.Controllers
     public class AppointmentController : Controller
     {
         DataContext dal = new DataContext();
-        DateTime date;
+        String date;
 
         //apptBook view matrai ho yo.
         public IActionResult ApptBook()
@@ -64,31 +64,63 @@ namespace DocPatientPortal.Controllers
         //quering for available doctor
         //To Be Continue...
         
-        public void getDate(DateTime date)
-        {
-            this.date = date;
-        }
+        
         //-------------------------------WORKING HERE-----------------------------------------------------------------------
 
-
+        
        
-        [HttpPost]
-        public IActionResult Check(DateTime date)// multiple constraints query is passed eg. Doc-speciality, Date, Time.
+        
+        public JsonResult Check(String adate)// multiple constraints query is passed eg. Doc-speciality, Date, Time.
         {
+            //ya date aayo
+            this.date = adate;
+            return Json(adate);
 
-            try
+
+
+
+
+
+
+
+
+            /*  try
+              {
+                  *//*DataContext dal = new DataContext();*//*
+                  var dataset = dal.Doctors.Find( date);
+                  ViewBag.available_doc = dataset;
+              }
+              catch (Exception ex)
+              {
+                  Console.WriteLine(ex);
+              }*/
+
+            //return View(adate);
+            //return RedirectToAction("ApptBook");
+        }
+
+
+        public void Insert(int did)
+        {
+         
+            //appointment
+            //patient user
+            int uid = JsonConvert.DeserializeObject<UserLogin>(HttpContext.Session.GetString("User")).uid;
+            // String sdate = date.ToString("dd/MM/yyyy");
+            //DateTime trimmeddate = Convert.ToDateTime(sdate);
+            DateTime adate = Convert.ToDateTime(date);
+            
+            Appointment data = new Appointment()
             {
-                /*DataContext dal = new DataContext();*/
-                var dataset = dal.Doctors.Find( date);
-                ViewBag.available_doc = dataset;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-            }
+                adate = adate,
+                uid = uid,
+                doc_id=did
 
+            };
 
-            return RedirectToAction("ApptBook");
+            dal.appointmentss.Add(data);
+            dal.SaveChanges();
+
         }
         public IActionResult ApptView()
         {

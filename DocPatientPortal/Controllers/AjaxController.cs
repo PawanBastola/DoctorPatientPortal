@@ -10,7 +10,7 @@ namespace DocPatientPortal.Controllers
 {
     public class AjaxController : Controller
     {
-        DataContext dal = new DataContext();
+        //DataContext dal = new DataContext();
         public JsonResult myFunc()
         {
             String[] abc = { "something", "abc" };
