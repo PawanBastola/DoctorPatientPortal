@@ -1,37 +1,60 @@
 ﻿@page
 @model DocPatientPortal.Views.Ajax.IndexModel
 @{
-    Layout = "_LayoutPatient";
+    Layout = null;
     //html code for ajaxcontroller.
 }
 
-<input type="submit" class="btn btn-primary" role="button" onclick="Btnclick()" />
-<input type ="text" id="setText"/>
-<input type ="text" id="setTextB"/>
+<form method="post" asp-controller="Ajax" asp-action="newFunction">
+    <div class="form-group row">
+        <label for="example-date-input" class="col-2 col-form-label">Date</label>
+        <div class="col-10">
+            <input class="form-control" type="date" placeholder="yyyy-mm-dd" min='1899-01-01' id="datefield" name="adate">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="" class="col-2 col-form-label"></label>
+        <div class="col-10">
+            <input type="submit" class="btn btn-warning font-weight-bold form-control"  id="checkid" value="send data">
+        </div>
+    </div>
+
+</form>
+
+
 @section Scripts{ 
+
+<!--Date validation-->
 <script>
 
-    function Btnclick() {
-        $.ajax({
-            url: '@Url.Action("newFunction", "Ajax")',
-            type: "GET",
-            dataType:"text",
-            success: function (data) {
-                parsedata = JSON.parse(data);
-                console.log(parsedata);
+    var today = new Date();
+    var day = today.getDate();
+    var mm = today.getMonth() + 1; //January is 0!
+    var yyyy = today.getFullYear();
+    if (day < 10) {
+        day = '0' + day
+    }
+    if (mm < 10) {
+        mm = '0' + mm
+    }
 
-                $('#setText').val(parsedata[0]);
-                $('#setTextB').val(parsedata[1]);
+    today = yyyy + '-' + mm + '-' + day;
 
+    document.getElementById("datefield").setAttribute("min", today);
 
+</script>
 
-            },
-            error: function (err) {
-                console.error(err);
-            }
-        });
+<!--ajax for sending data to controller-->>
+<script>
+
+    function SubmitForm() {
+       
     }
 
 </script>
 }
+
+
+
 

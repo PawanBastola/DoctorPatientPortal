@@ -24,7 +24,7 @@ namespace DocPatientPortal.Controllers
         {
 
            
-            int user_id = JsonConvert.DeserializeObject<UserLogin>(HttpContext.Session.GetString("User")).uid;///getting from session
+            //int user_id = JsonConvert.DeserializeObject<UserLogin>(HttpContext.Session.GetString("User")).uid;///getting from session
 
             if (HttpContext.Session.GetString("Logged") == "true")
             {
@@ -36,9 +36,6 @@ namespace DocPatientPortal.Controllers
                 return RedirectToAction("Index", "Login");
             
         }
-
-       
-
         #region SelectCode All Doctors
         public IActionResult SelectAllDoctors()
         {
@@ -62,45 +59,25 @@ namespace DocPatientPortal.Controllers
         //which have aid(Key), uid, doc_id, adate(DateTime), atime(DateTime)
 
         //quering for available doctor
-        //To Be Continue...
-        
-        
+        //To Be Continue...till now 2078/05/13
+
+
         //-------------------------------WORKING HERE-----------------------------------------------------------------------
 
+
         
-       
         
-        public JsonResult Check(String adate)// multiple constraints query is passed eg. Doc-speciality, Date, Time.
+        public void Check(String adate)// multiple constraints query is passed eg. Doc-speciality, Date, Time.
         {
             //ya date aayo
             this.date = adate;
-            return Json(adate);
 
-
-
-
-
-
-
-
-
-            /*  try
-              {
-                  *//*DataContext dal = new DataContext();*//*
-                  var dataset = dal.Doctors.Find( date);
-                  ViewBag.available_doc = dataset;
-              }
-              catch (Exception ex)
-              {
-                  Console.WriteLine(ex);
-              }*/
-
-            //return View(adate);
-            //return RedirectToAction("ApptBook");
+           
+            
         }
 
 
-        public void Insert(int did)
+        public IActionResult Insert(int did , DateTime adate)
         {
          
             //appointment
@@ -108,7 +85,7 @@ namespace DocPatientPortal.Controllers
             int uid = JsonConvert.DeserializeObject<UserLogin>(HttpContext.Session.GetString("User")).uid;
             // String sdate = date.ToString("dd/MM/yyyy");
             //DateTime trimmeddate = Convert.ToDateTime(sdate);
-            DateTime adate = Convert.ToDateTime(date);
+            //DateTime adate = Convert.ToDateTime(date);
             
             Appointment data = new Appointment()
             {
@@ -120,6 +97,8 @@ namespace DocPatientPortal.Controllers
 
             dal.appointmentss.Add(data);
             dal.SaveChanges();
+
+            return RedirectToAction("ApptView", "Appointment");
 
         }
         public IActionResult ApptView()
@@ -163,9 +142,12 @@ namespace DocPatientPortal.Controllers
            
            
         }
-        public IActionResult ApptCancel()
+        public IActionResult ApptCancel(int aid)
         {
-            return View();
+            Appointment thisappointment = dal.appointmentss.Find(aid);
+            dal.Remove(thisappointment);
+            dal.SaveChanges();
+            return RedirectToAction("ApptView", "Appointment");
         }
 
     }

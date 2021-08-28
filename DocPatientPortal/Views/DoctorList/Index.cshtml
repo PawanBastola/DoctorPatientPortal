@@ -2,6 +2,7 @@
 @model DocPatientPortal.Views.DoctorList.IndexModel
 @{
     Layout = "_LayoutPatient";
+    
 }
 <br />
 
@@ -10,19 +11,15 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('#datatable').DataTable();
-            $("ul li.mark").css("background", "yellow");
-            $("ul li#red").css("background", "red");
-            
+            //yo vanda tala vaneko css matrei ho
+            // $("ul li.mark").css("background", "yellow");
+            //$("ul li#red").css("background", "red");
+
         });
     </script>
 }
 
-<ul type="circle">
-    <li class="mark"> hello</li>
-    <li class="mark"> hy</li>
-    <li id="red">highlight this</li>
 
-</ul>
 
 
 <table class="table table-secondary table-hover " id="datatable">
@@ -38,21 +35,19 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>1</td>
-            <td>abcd</td>
-            <td>Bone</td>
-            <td>+91 9845784125</td>
-            <td>abcd@gmail.com</td>
+      @{ var i = 1;} 
+        @foreach (var doctor in ViewBag.Doctors)
+        {
+           
+            <tr>
+                <td>@i</td>
+                <td>@doctor.d_full_name</td>
+                <td>@doctor.d_speciality</td>
+                <td>@doctor.d_contact</td>
+                <td>@doctor.d_email</td>
 
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>efgh</td>
-            <td>Skin</td>
-            <td>+91 984556825</td>
-            <td>efgh@gmail.com</td>
-
-        </tr>
+            </tr>
+            i++;
+        }
     </tbody>
 </table>

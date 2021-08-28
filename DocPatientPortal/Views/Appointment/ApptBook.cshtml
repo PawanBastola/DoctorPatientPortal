@@ -79,9 +79,11 @@
 <div class="form-group row">
     <label for="" class="col-2 col-form-label"></label>
     <div class="col-10">
-        <input type="submit" class="btn btn-warning font-weight-bold form-control" onclick="btnclick()" id="checkid" value="Check">
+        
+        <a class="btn btn-warning font-weight-bold form-control" asp-controller="Appointment" asp-action="Check" asp-route-adate="2019-02-31">Check</a>
     </div>
 </div>
+
 
 <table class="table table-dark table-hover">
     <thead>
@@ -103,7 +105,7 @@
                 <td>@item.d_full_name</td>
                 <td>@item.d_speciality</td>
                 <td>@item.d_city</td>
-                <td><a class="btn btn-primary" asp-controller="Profile" asp-action="Index" asp-route-did="@item.d_id">Profile</a>  <a class="btn btn-success text-warning" asp-controller="Appointment" asp-action="Insert" asp-route-did="@item.d_id">Book</a></td>
+                <td><a class="btn btn-primary" asp-controller="Profile" asp-action="Index" asp-route-did="@item.d_id">Profile</a>  <a class="btn btn-success text-warning" asp-controller="Appointment" asp-action="Insert" asp-route-did="@item.d_id" asp-route-adate="">Book</a></td>
             </tr>
         }
     </tbody>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DocPatientPortal.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,17 +10,14 @@ namespace DocPatientPortal.Controllers
 {
     public class DoctorListController : Controller
     {
+        DataContext dal = new DataContext();
         public IActionResult Index()
         {
-            if (HttpContext.Session.GetString("Logged") == "true")
-            {
+            ViewBag.Doctors = dal.Doctors.ToList();
             return View();
 
-            }
-            else
-            {
-                return RedirectToAction("Index", "Login");
-            }
+           
+           
         }
     }
 }

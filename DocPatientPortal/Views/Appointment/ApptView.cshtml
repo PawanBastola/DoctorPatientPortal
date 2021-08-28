@@ -3,10 +3,27 @@
 @{
     Layout = "_LayoutPatient";
 }
+@section Scripts{
+    <script type="text/javascript">
 
+        function getConfirmation() {
+            var retVal = confirm("Do you want to continue ?");
+            if (retVal == true) {
+                document.write("User wants to continue!");
+                return true;
+            } else {
+                document.write("User does not want to continue!");
+                return false;
+            }
+        }
+
+    </script>
+
+}
 <br />
 <div style="background-color: grey;color:white; display:flex; justify-content:center;align-items:center;"><p>MY APPOINTMENT</p></div>
 <br />
+
 <table class="table table-dark table-hover" id="datatable">
     <thead>
 
@@ -20,6 +37,7 @@
 
         </tr>
     </thead>
+
     <tbody>
         @foreach (var appointment in ViewBag.appointments)
         {
@@ -27,18 +45,22 @@
             {
                 if (dd.d_id == appointment.doc_id)
                 {
-                    <tr class="text-lg-center" style="font-size:larger;">
+                   
+                        <tr class="text-lg-center" style="font-size:larger;">
 
-                        <td>@appointment.aid</td>
-                        <td>@appointment.uid</td>
-                        <td>@appointment.doc_id</td>
-                        <td>@dd.d_full_name</td>
-                        <td>@appointment.adate.ToString("dd/MM/yyyy")</td>
-                        <td><a class="btn btn-danger">Cancel</a></td>
-                    </tr>
+                            <td>@appointment.aid</td>
+                            @*<td>@appointment.uid</td>*@
+                            @*<td>@appointment.doc_id</td>*@
+                            <td>@dd.d_full_name</td>
+                            <td>@dd.d_speciality</td>
+                            <td>@appointment.adate.ToString("dd/MM/yyyy")</td>
+                            <td> <form method="post" asp-controller="Appointment" asp-action="ApptCancel" asp-route-aid="@appointment.aid" ><input onclick="return confirm('Are you sure to cancel appointment with : @dd.d_full_name')"  type="submit" value="Cancel" class="btn btn-danger"/></form></td>
+                        </tr>
+                    
                 }
             }
         }
 
-        </tbody>
+    </tbody>
+
 </table>

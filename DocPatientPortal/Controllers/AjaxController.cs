@@ -11,13 +11,13 @@ namespace DocPatientPortal.Controllers
     public class AjaxController : Controller
     {
         //DataContext dal = new DataContext();
-        public JsonResult myFunc()
+        public JsonResult MyFunc()
         {
             String[] abc = { "something", "abc" };
             return Json(abc);
         }
 
-        public JsonResult newFunction()
+        public JsonResult NewFunction()
         {
             /*var list = dal.userlogins.ToList();
             var json = JsonConvert.SerializeObject(list);*/
