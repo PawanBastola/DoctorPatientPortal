@@ -17,7 +17,7 @@ namespace DocPatientPortal.Controllers
         {
             _webHostEnvironment = webHostEnvironment;
         }
-        #region uploadimage functions
+        
 
         public async Task<string> UploadImage(string folderpath, IFormFile file)
         {
@@ -26,7 +26,7 @@ namespace DocPatientPortal.Controllers
             await file.CopyToAsync(new FileStream(serverFolder, FileMode.Create));
             return "/" + folderpath;
         }
-        #endregion
+        
 
         DataContext dal = new DataContext();
         public IActionResult Index()
@@ -53,24 +53,11 @@ namespace DocPatientPortal.Controllers
             return exist;
         }
 
-
-        /// <summary>
-        /// ---------Doctor signup card----------
-        /// </summary>     
+        //doctor signup
         [HttpPost]
         public async Task<IActionResult> Doctor_register(DoctorSignupViewModel viewmodel)
         {
-
-            //var user = dal.userlogins.Where(x => x.username.Equals(viewmodel.username)).ToList();
-            //int count = user.Count();
-            //String url = "";
-
-
-
             string folder = "image/certificate/";
-            /* url = await UploadImage(folder, viewmodel.d_certificate);*/
-
-
 
             UserLogin login = new UserLogin()
             {
@@ -98,8 +85,6 @@ namespace DocPatientPortal.Controllers
                 d_username = viewmodel.username
             };
 
-
-
             dal.userlogins.Add(login);
             dal.Doctors.Add(doctors);
             dal.SaveChanges();
@@ -110,10 +95,7 @@ namespace DocPatientPortal.Controllers
         }
 
 
-        /// <summary>
-        /// Patient Signup Card
-        /// </summary>
-        
+       //patient signup
         
         [HttpPost]
         public async Task<IActionResult> Patient_register(Patient_Details patient, string password, string username, IFormFile photo)

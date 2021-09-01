@@ -198,3 +198,5 @@ E:\Projects\DocPatientPortal\DocPatientPortal\obj\Debug\netcoreapp3.1\Razor\View
 E:\Projects\DocPatientPortal\DocPatientPortal\obj\Debug\netcoreapp3.1\Razor\Views\NewRequest\ViewRequest.cshtml.g.cs
 E:\Projects\DocPatientPortal\DocPatientPortal\obj\Debug\netcoreapp3.1\Razor\Views\SignUp\Register_message.cshtml.g.cs
 E:\Projects\DocPatientPortal\DocPatientPortal\obj\Debug\netcoreapp3.1\Razor\Views\Ajax\Index.cshtml.g.cs
+E:\Projects\DocPatientPortal\DocPatientPortal\obj\Debug\netcoreapp3.1\Razor\Views\Offday\Index.cshtml.g.cs
+E:\Projects\DocPatientPortal\DocPatientPortal\obj\Debug\netcoreapp3.1\Razor\Views\Checkbox\Index.cshtml.g.cs

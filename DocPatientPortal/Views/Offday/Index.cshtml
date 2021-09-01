@@ -1,0 +1,14 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_LayoutDoctor";
+}
+
+
+<form method="post" asp-controller="Offday" asp-action="Addoffday">
+    
+    <input type="date" name="absent_date"/>
+    <input type="submit" value="setOffDay"/>
+    
+</form>

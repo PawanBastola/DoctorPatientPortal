@@ -23,37 +23,71 @@ namespace DocPatientPortal.Controllers
         public IActionResult ApptBook()
         {
 
-           
             //int user_id = JsonConvert.DeserializeObject<UserLogin>(HttpContext.Session.GetString("User")).uid;///getting from session
 
             if (HttpContext.Session.GetString("Logged") == "true")
             {
-                ViewBag.speciality = new List<String> { "Bone", "Cardiac", "something" };
-                SelectAllDoctors();
+
+                var data = dal.Doctors.ToList();
+                ViewBag.Data = data;
+
                 return View();
             }
             else
                 return RedirectToAction("Index", "Login");
-            
+
         }
-        #region SelectCode All Doctors
-        public IActionResult SelectAllDoctors()
+
+
+        //overriding the method
+
+        [HttpPost]
+        public IActionResult ApptBook(String adate, String doc_spec)
         {
             try
             {
-                //bring the data of search BOX and query from LINQ.=>  jquery ...//datatable.
-                var data = dal.Doctors.ToList();
-                //var result = data.Where(x=>x.pname.Contains("A"));
-                ViewBag.Data = data;
+
+                // List<Unavaibility> absentdate = dal.unavaibilities.Where(x => x.absent_date.Equals(adate)).ToList<Unavaibility>();
+                //List<Doctor_Details> available_doctors = dal.Doctors.Where(s=>s.d_speciality.Equals(doc_spec)).Where(x=>absentdate.All(z=>z.did!=x.d_id)).ToList<Doctor_Details>();
+
+                //absent doctor id in choosen date
+                List<Unavailability> udatelist = dal.unavaibilities.Where(x=>x.absent_date.Contains(adate)).ToList<Unavailability>();
+                //speciality filter of doctor
+                List<Doctor_Details> available_doctors = dal.Doctors.Where(x => x.d_speciality.Equals(doc_spec)).ToList<Doctor_Details>();
+                //date filter of doctor
+                List<Doctor_Details> date_filters = available_doctors.Where(x => udatelist.All(y => y.did != x.d_id)).ToList<Doctor_Details>();
+                //eureka! eureka!! at 1:06 am morning
+
+                ViewBag.Data = date_filters;
+
+                return View();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex);
+
+                throw;
             }
-            return Redirect("/Appointment/ApptBook");
+
         }
 
-        #endregion
+        /* var data = from cols in dal.unavaibilities
+                    from c in dal.Doctors
+                    where cols.absent_date != adate && c.d_speciality == doc_spec
+                    select new
+                    {
+                        d_id = c.d_id,
+                        d_full_name=c.d_full_name,
+                        d_speciality = c.d_speciality,
+                        d_city = c.d_city
+                    };*/
+
+
+
+
+
+
+
+
 
         //here we are going to use the book [Button] residing on [ApptBook View] to insert appintment details in appointment table.
         //which have aid(Key), uid, doc_id, adate(DateTime), atime(DateTime)
@@ -65,33 +99,35 @@ namespace DocPatientPortal.Controllers
         //-------------------------------WORKING HERE-----------------------------------------------------------------------
 
 
-        
-        
-        public void Check(String adate)// multiple constraints query is passed eg. Doc-speciality, Date, Time.
+
+
+        public void Check(String doc_spec, String adate)// multiple constraints query is passed eg. Doc-speciality, Date
         {
             //ya date aayo
             this.date = adate;
 
-           
-            
+
+
+
         }
 
 
-        public IActionResult Insert(int did , DateTime adate)
+        //not working
+        public IActionResult Insert(int did, DateTime adate)
         {
-         
+
             //appointment
             //patient user
             int uid = JsonConvert.DeserializeObject<UserLogin>(HttpContext.Session.GetString("User")).uid;
             // String sdate = date.ToString("dd/MM/yyyy");
             //DateTime trimmeddate = Convert.ToDateTime(sdate);
             //DateTime adate = Convert.ToDateTime(date);
-            
+
             Appointment data = new Appointment()
             {
                 adate = adate,
                 uid = uid,
-                doc_id=did
+                doc_id = did
 
             };
 
@@ -103,21 +139,15 @@ namespace DocPatientPortal.Controllers
         }
         public IActionResult ApptView()
         {
-           /* if (HttpContext.Session.GetString("Logged")=="true")
-            {
 
-            }
-            else
-            {
-                return RedirectToAction("Index","Login");
-            }*/
             //checking if session is set
 
-            if (HttpContext.Session.GetString("Logged")=="true")
+            if (HttpContext.Session.GetString("Logged") == "true")
             {
-                
 
-                try{
+
+                try
+                {
                     //id from session
                     int uid = JsonConvert.DeserializeObject<UserLogin>(HttpContext.Session.GetString("User")).uid;
 
@@ -139,8 +169,8 @@ namespace DocPatientPortal.Controllers
                 return RedirectToAction("Index", "Login");
             }
             //getting user id from session
-           
-           
+
+
         }
         public IActionResult ApptCancel(int aid)
         {
@@ -149,6 +179,8 @@ namespace DocPatientPortal.Controllers
             dal.SaveChanges();
             return RedirectToAction("ApptView", "Appointment");
         }
+
+
 
     }
 }
