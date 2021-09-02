@@ -3,5 +3,41 @@
 @{
     Layout = "_LayoutDoctor";
 }
-<p>Patient name : Ram</p>
-<p>Time: 9:30 am</p>
+
+@section Scripts{ 
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#datatable').DataTable();
+        });
+    </script>
+}
+<br />
+<h1 class="mx-auto">Your Appointments Today</h1>
+<table class="table table-bordered table-striped text-center" id="datatable">
+    <thead class="thead-dark">
+
+        <tr>
+            <th>apt no.</th>
+            <th>Patient</th>
+            <th>Date</th>
+            <th>Action</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        
+        @foreach (var data in ViewBag.Appointment)
+        {
+
+        <tr>
+            
+            <td>@data.aid</td>
+            <td>@data.uid</td>
+            <td>@data.adate.ToString("dd/MM/yyyy")</td>
+            <td><a class="btn btn-primary" asp-controller="#" asp-action="#" asp-route-aid="#">Prescribe</a>  <a class="btn btn-success text-warning" asp-controller="Appointment" asp-action="#" asp-route-aid="#" >Dismiss</a></td>
+
+        </tr>
+        
+        }
+    </tbody>
+</table>

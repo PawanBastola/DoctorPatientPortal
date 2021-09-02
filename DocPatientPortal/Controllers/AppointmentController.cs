@@ -27,10 +27,8 @@ namespace DocPatientPortal.Controllers
 
             if (HttpContext.Session.GetString("Logged") == "true")
             {
-
                 var data = dal.Doctors.ToList();
                 ViewBag.Data = data;
-
                 return View();
             }
             else
@@ -59,7 +57,7 @@ namespace DocPatientPortal.Controllers
                 //eureka! eureka!! at 1:06 am morning
 
                 ViewBag.Data = date_filters;
-
+                ViewBag.date = adate;
                 return View();
             }
             catch (Exception)

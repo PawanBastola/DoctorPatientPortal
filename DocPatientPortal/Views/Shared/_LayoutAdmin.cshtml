@@ -10,6 +10,7 @@
     <link href="~/css/profile.css" rel="stylesheet" />
     <link href="~/css/admin_button_hide.css" rel="stylesheet" />
     <link href="~/lib/jquery-datatables/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="~/lib/fontawesome/css/all.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -38,7 +39,7 @@
                     </li>
                     <li class="nav-item ">
                         <a asp-controller="NewRequest" asp-action="Index" class="nav-link">NewRequest</a>
-                    </li> 
+                    </li>
                     <li class="nav-item ">
                         <a asp-controller="Feedback" asp-action="Index" class="nav-link">Feedback</a>
                     </li>
@@ -47,11 +48,17 @@
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
+                        <div>
+                            <a asp-controller="Login" asp-action="Logout" class="btn btn-dark border border-danger" title="Logout"><i class="fas fa-sign-out-alt" style="color:white;"></i></a>
+                        </div>
+                    </li>
+
+                    <!--<li class="nav-item">
                         <div class="profileimage">
-                            <a asp-controller="Profile" asp-action="Index"> <img src="~/image/profile.jpg" style="width:50px; height:50px; border:3px solid #31a24c; border-radius:50%;" alt="User Profile" /> </a>
+                            <a asp-controller="Profile" asp-action="Index" title="View Profile"> <img src="~/image/profile.jpg" style="width:50px; height:50px; border:3px solid #31a24c; border-radius:50%;" alt="User Profile" /> </a>
                         </div>
 
-                    </li>
+                    </li>-->
                 </ul>
             </div>
         </nav>
@@ -106,6 +113,14 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/lib/jquery-datatables/js/jquery.dataTables.min.js"></script>
+    <script src="~/lib/fontawesome/js/all.js"></script>
+    <!--custom scripts-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('[title="Logout"]').tooltip();
+            $('[title="View Profile"]').tooltip();
+        });
+    </script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

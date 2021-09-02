@@ -4,11 +4,7 @@
 @{
     Layout = "_LayoutPatient";
 }
-
 <br />
-
-
-
 @section Scripts{
     <script type="text/javascript">
 
@@ -87,7 +83,7 @@
                 <td>@item.d_full_name</td>
                 <td>@item.d_speciality</td>
                 <td>@item.d_city</td>
-                <td><a class="btn btn-primary" asp-controller="Profile" asp-action="Index" asp-route-did="@item.d_id">Profile</a>  <a class="btn btn-success text-warning" asp-controller="Appointment" asp-action="Insert" asp-route-did="@item.d_id" asp-route-adate="">Book</a></td>
+                <td><a class="btn btn-primary" asp-controller="Profile" asp-action="Index" asp-route-did="@item.d_id">Profile</a>  <a class="btn btn-success text-warning" asp-controller="Appointment" asp-action="Insert" asp-route-did="@item.d_id" asp-route-adate="@ViewBag.date">Book</a></td>
             </tr>
         }
     </tbody>
