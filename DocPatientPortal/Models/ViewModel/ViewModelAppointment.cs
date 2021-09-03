@@ -10,8 +10,7 @@ namespace DocPatientPortal.Models.ViewModel
         public int aid { get; set; }
         public int uid { get; set; }
         public int doc_id { get; set; }
-        public String doc_name { get; set; }
-        public String doc_speciality { get; set; }
         public DateTime adate { get; set; }
+        public String patient_name { get; set; }
     }
 }

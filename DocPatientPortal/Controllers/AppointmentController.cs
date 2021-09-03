@@ -116,15 +116,17 @@ namespace DocPatientPortal.Controllers
 
             //appointment
             //patient user
-            int uid = JsonConvert.DeserializeObject<UserLogin>(HttpContext.Session.GetString("User")).uid;
+            String username = JsonConvert.DeserializeObject<UserLogin>(HttpContext.Session.GetString("User")).username;
+            List<Patient_Details> pdetails = dal.Patients.Where(x => x.p_username.Equals(username)).ToList();
             // String sdate = date.ToString("dd/MM/yyyy");
             //DateTime trimmeddate = Convert.ToDateTime(sdate);
             //DateTime adate = Convert.ToDateTime(date);
 
+            int pid = dal.Patients.Where(x => x.p_username.Equals(username)).First().p_id;
             Appointment data = new Appointment()
             {
                 adate = adate,
-                uid = uid,
+                uid = pid,
                 doc_id = did
 
             };
@@ -147,10 +149,13 @@ namespace DocPatientPortal.Controllers
                 try
                 {
                     //id from session
-                    int uid = JsonConvert.DeserializeObject<UserLogin>(HttpContext.Session.GetString("User")).uid;
+                    String username = JsonConvert.DeserializeObject<UserLogin>(HttpContext.Session.GetString("User")).username;
+                    List<Patient_Details> pdetails = dal.Patients.Where(x => x.p_username.Equals(username)).ToList();
+                    int pid = dal.Patients.Where(x => x.p_username.Equals(username)).First().p_id;
+
 
                     //list of appointment of user
-                    List<Appointment> appointmentList = dal.appointmentss.Where(x => x.uid.Equals(uid)).ToList<Appointment>();
+                    List<Appointment> appointmentList = dal.appointmentss.Where(x => x.uid.Equals(pid)).ToList<Appointment>();
                     List<Doctor_Details> doctorList = dal.Doctors.ToList<Doctor_Details>();
                     ViewBag.appointments = appointmentList;
                     ViewBag.doctorList = doctorList;
