@@ -1,0 +1,103 @@
+﻿@page
+@model DocPatientPortal.Views.Profile.PatientProfileModel
+@{
+    Layout = "_LayoutPatient";
+}
+
+<br />
+<div class="mainContainer">
+    <!--first card-->
+    <div class="personalinfo-card">
+        <div class="container">
+            <div class="headings">
+                <h1>Personal Information</h1>
+                <hr>
+            </div>
+            <div class="content">
+                <div class="leftContent">
+                    <p>Name: @ViewBag.Patient.p_fullname</p>
+                    <p>Gender: @ViewBag.Patient.p_gender</p>
+                    <p>Blood gp.: @ViewBag.Patient.p_blood</p>
+                    <p>DOB: @ViewBag.Patient.p_dob.ToString("dd/MM/yyyy")</p>
+                    <p>Address: @ViewBag.Patient.p_fulladdress</p>
+                    <p>Nationality: Nepalese</p>
+                    <p>Contact: @ViewBag.Patient.p_contact </p>
+                    <p>Email: @ViewBag.Patient.p_email</p>
+
+                </div>
+                <div class="rightContent">
+                    <img src="@ViewBag.Patient.p_photo" alt="birthdayimage">
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!--Second card-->
+    <div class="diaginfo-card">
+        <div class="container">
+            <div class="headings">
+                <h1>Diagnosed Information</h1>
+                <hr>
+            </div>
+
+            <div class="content">
+
+                <div class="leftContent">
+
+                    <ul type="Circle">
+                        @foreach (var item in ViewBag.Prescription)
+                        {
+                            <li>@item.information</li>
+                        }
+
+
+                    </ul>
+
+                </div>
+
+
+            </div>
+        </div>
+
+
+    </div>
+    <br />
+    <br />
+
+</div>
+<!--third card-->
+<div class="mainContainer">
+
+    <div class="diaginfo-card">
+        <div class="container">
+            <div class="headings">
+                <h1>Medical Information</h1>
+                <hr>
+            </div>
+
+            <div class="content">
+
+                <div class="">
+
+                    <ul type="Circle">
+                        @foreach (var item in ViewBag.Prescription)
+                        {
+                            <li>@item.medication</li>
+                        }
+
+
+                    </ul>
+
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<br />
+<br />
+<br />
+

@@ -34,7 +34,7 @@
             <td>@data.aid</td>
             <td>@data.patient_name</td>
             <td>@data.adate.ToString("dd/MM/yyyy")</td>
-            <td><a class="btn btn-primary" asp-controller="#" asp-action="#" asp-route-aid="#">Prescribe</a>  <a class="btn btn-success text-warning" asp-controller="Appointment" asp-action="#" asp-route-aid="#" >Dismiss</a></td>
+            <td><a class="btn btn-primary" asp-controller="Prescription" asp-action="Index" asp-route-p_id="@data.uid">Prescribe</a>  <a class="btn btn-success text-warning" asp-controller="Appointment" asp-action="#" asp-route-aid="#" >Dismiss</a></td>
 
         </tr>
         

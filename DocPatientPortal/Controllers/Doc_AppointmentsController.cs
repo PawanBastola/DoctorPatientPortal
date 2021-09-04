@@ -38,15 +38,7 @@ namespace DocPatientPortal.Controllers
                 }).ToList();
 
                 
-                //patient details
-                #region take a name of patient
-
-                /*List<Patient_Details> patient_Details = dal.Patients.ToList();
-
-                List<Patient_Details> filter_patients = patient_Details.Where(x => appointmentlist.All(y => y.uid.Equals(x.p_id))).ToList();*/
-                #endregion
-
-                
+                                
 
                 
                 //getting current date
@@ -61,5 +53,8 @@ namespace DocPatientPortal.Controllers
                 return RedirectToAction("Index", "Login");
             }
         }
+       
+
+
     }
 }

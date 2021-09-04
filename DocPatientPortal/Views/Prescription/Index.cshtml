@@ -1,0 +1,32 @@
+﻿@page
+@model DocPatientPortal.Views.Prescription.IndexModel
+@{
+    Layout = "_LayoutDoctor";
+}
+
+<br />
+
+<div class="card align-self-center" style="width: 18rem;">
+    <h1 class="text-primary font-weight-bold text-center">Add Prescription</h1>
+    <hr />
+    <div class="card-body align-content-between">
+
+        <form method="post" asp-controller="Prescription" asp-action="AddPrescription">
+            <div class="form-group">
+                <label>Patient id:</label>
+                <input type="text" name="p_id" value="@ViewBag.p_id" readonly />
+            </div>
+            
+            <div class="form-group">
+                <label>Diagonosed with:</label>
+                <input type="text" name="information" placeholder="diagonised with...." autofocus />
+            </div>
+            
+            <div class="form-group">
+                <label>Medication</label>
+                <input type="text" name="medication" placeholder="medication/treatment...." />
+            </div>
+            <input type="submit" value="Add" />
+        </form>
+    </div>
+</div>

@@ -31,6 +31,7 @@ namespace DocPatientPortal.Controllers
                 //setting session using HttpContext
 
                 HttpContext.Session.SetString("User", JsonConvert.SerializeObject(user_List[0])); //note argument should be in strings only.
+                
                 HttpContext.Session.SetString("Logged", "true");
                 HttpContext.Session.SetString("password", password);
 
@@ -42,6 +43,8 @@ namespace DocPatientPortal.Controllers
             else if (user_List.Count() == 1 && user_List[0].password.Equals(password) && user_List[0].role.Equals("patient") && user_List[0].status.Equals("Active"))
             {
                 HttpContext.Session.SetString("User", JsonConvert.SerializeObject(user_List[0])); //note argument should be in strings only.
+                String pat_id = dal.Patients.Where(x => x.p_username.Equals(user_List[0].username)).First().p_id.ToString();
+                HttpContext.Session.SetString("pat_id", pat_id);
                 HttpContext.Session.SetString("Logged", "true");
                 HttpContext.Session.SetString("password", password);
 
@@ -54,6 +57,8 @@ namespace DocPatientPortal.Controllers
             else if (user_List.Count() == 1 && user_List[0].password.Equals(password) && user_List[0].role.Equals("doctor") && user_List[0].status.Equals("Active"))
             {
                 HttpContext.Session.SetString("User", JsonConvert.SerializeObject(user_List[0])); //note argument should be in strings only.
+                String doc_id = dal.Doctors.Where(x => x.d_username.Equals(user_List[0].username)).First().d_id.ToString();
+                HttpContext.Session.SetString("doc_id",doc_id);
                 HttpContext.Session.SetString("Logged", "true");
                 HttpContext.Session.SetString("password", password);
 

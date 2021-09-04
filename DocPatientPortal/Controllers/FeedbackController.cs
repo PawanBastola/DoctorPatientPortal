@@ -13,7 +13,7 @@ namespace DocPatientPortal.Controllers
         {
             if (HttpContext.Session.GetString("Logged") == "true")
             {
-            return View();
+                return View();
 
             }
             else
@@ -21,5 +21,21 @@ namespace DocPatientPortal.Controllers
                 return RedirectToAction("Index", "Login");
             }
         }
+        public IActionResult doctorfeedback()
+        {
+            if (HttpContext.Session.GetString("Logged") == "true")
+            {
+
+                return View();
+
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
+        }
+
+
+
     }
 }
