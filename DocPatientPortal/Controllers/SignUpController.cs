@@ -31,6 +31,7 @@ namespace DocPatientPortal.Controllers
         DataContext dal = new DataContext();
         public IActionResult Index()
         {
+            ViewBag.speciality = dal.specialities.ToList();
             return View();
         }
 

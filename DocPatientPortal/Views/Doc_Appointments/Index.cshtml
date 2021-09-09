@@ -4,40 +4,53 @@
     Layout = "_LayoutDoctor";
 }
 
-@section Scripts{ 
+@section Scripts{
     <script type="text/javascript">
         $(document).ready(function () {
             $('#datatable').DataTable();
         });
     </script>
-}
-<br />
-<h1 class="mx-auto">Your Appointments Today</h1>
-<table class="table table-bordered table-striped text-center" id="datatable">
-    <thead class="thead-dark">
+    <script type="text/javascript">
 
-        <tr>
-            <th>apt no.</th>
-            <th>Patient</th>
-            <th>Date</th>
-            <th>Action</th>
-
-        </tr>
-    </thead>
-    <tbody>
-        
-        @foreach (var data in ViewBag.Appointment)
-        {
-
-        <tr>
-            
-            <td>@data.aid</td>
-            <td>@data.patient_name</td>
-            <td>@data.adate.ToString("dd/MM/yyyy")</td>
-            <td><a class="btn btn-primary" asp-controller="Prescription" asp-action="Index" asp-route-p_id="@data.uid">Prescribe</a>  <a class="btn btn-success text-warning" asp-controller="Appointment" asp-action="#" asp-route-aid="#" >Dismiss</a></td>
-
-        </tr>
-        
+        function getConfirmation() {
+            var retVal = confirm("Do you want to continue ?");
+            if (retVal == true) {
+                document.write("User wants to continue!");
+                return true;
+            } else {
+                document.write("User does not want to continue!");
+                return false;
+            }
         }
-    </tbody>
-</table>
+    </script>
+    }
+    <br />
+    <h1 class="mx-auto">Your Appointments Today</h1>
+    <table class="table table-bordered table-striped text-center" id="datatable">
+        <thead class="thead-dark">
+
+            <tr>
+                <th>apt no.</th>
+                <th>Patient</th>
+                <th>Date</th>
+                <th>Action</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var data in ViewBag.Appointment)
+            {
+
+                <tr>
+
+                    <td>@data.aid</td>
+                    <td>@data.patient_name</td>
+                    <td>@data.adate.ToString("dd/MM/yyyy")</td>
+                    <td><a class="btn btn-primary" asp-controller="Prescription" asp-action="Index" asp-route-p_id="@data.uid">Prescribe</a>  <a class="btn btn-success text-warning" asp-controller="Doc_Appointments" asp-action="DismissAppointment" asp-route-aid="@data.aid" onclick="return confirm('Are you sure to cancel appointment with : @data.patient_name')">Dismiss</a></td>
+
+                </tr>
+
+            }
+        </tbody>
+    </table>

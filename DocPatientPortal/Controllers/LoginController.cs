@@ -21,7 +21,7 @@ namespace DocPatientPortal.Controllers
         [HttpPost]
         public IActionResult LoginCheck(String username, String password)
         {
-            var user_List = dal.userlogins.Where(x => x.username.Equals(username)).ToList();
+            var user_List = dal.userlogins.Where(x => x.username.Equals(username)).Where(y=>y.password.Equals(password)).ToList();
 
             #region IF admin role check
 

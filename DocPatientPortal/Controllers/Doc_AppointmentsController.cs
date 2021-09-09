@@ -26,7 +26,7 @@ namespace DocPatientPortal.Controllers
                 List<Doctor_Details> doc = dal.Doctors.Where(x=>x.d_username.Equals(username)).ToList();
 
                 //list of todays appointment
-                List<Appointment> appointmentlist = dal.appointmentss.Where(x => x.doc_id.Equals(doc[0].d_id)).Where(y=>y.adate.Equals(DateTime.Now.Date)).ToList<Appointment>();
+                List<Appointment> appointmentlist = dal.appointmentss.Where(x => x.doc_id.Equals(doc[0].d_id)).Where(y=>y.adate.Equals(DateTime.Now.Date)).Where(z=>z.status.Equals("Pending")).ToList<Appointment>();
 
                 List<ViewModelAppointment> viewmodellist = appointmentlist.Select(appointmentx => new ViewModelAppointment()
                 {
@@ -53,8 +53,15 @@ namespace DocPatientPortal.Controllers
                 return RedirectToAction("Index", "Login");
             }
         }
-       
 
+        public IActionResult DismissAppointment(int aid)
+        {
+
+            Appointment thisappointment = dal.appointmentss.Find(aid);
+            dal.Remove(thisappointment);
+            dal.SaveChanges();
+            return RedirectToAction("Index", "Doc_Appointments");
+        }
 
     }
 }

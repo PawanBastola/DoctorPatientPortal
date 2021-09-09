@@ -30,9 +30,9 @@ namespace DocPatientPortal.Models
         public DbSet<Patient_Details> Patients { get; set; }
         public DbSet<UserLogin> userlogins { get; set; }
         public DbSet<Appointment> appointmentss { get; set; }
-
         public DbSet<Unavailability> unavaibilities { get; set; }
         public DbSet<Prescription> prescriptions { get; set; }
+        public DbSet<Speciality> specialities { get; set; }
 
         //Need to register your models here
         // public DbSet<Product> Products { get; set; }

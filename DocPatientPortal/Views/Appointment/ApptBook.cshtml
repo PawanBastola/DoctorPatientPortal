@@ -23,72 +23,86 @@
 
         document.getElementById("datefield").setAttribute("min", today);
     </script>
-    }
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.get("#my_table").hide();
+            $.get(@ViewBag.id).show();
+
+        });
+
+            
+    </script>
+
+
+
+}
 
 
 
 
 <!--query check-->
 
-    <form  asp-controller="Appointment" asp-action="ApptBook" method="post">
-        <div class="form-group row">
-            <label for="example-text-input" class="col-2 col-form-label">Category</label>
-            <div class="col-10">
+<form asp-controller="Appointment" asp-action="ApptBook" method="get">
+    <div class="form-group row">
+        <label for="example-text-input" class="col-2 col-form-label">Category</label>
+        <div class="col-10">
 
-                <select class="form-select" aria-label="Default select example" name="doc_spec">
-                    
-                    <option selected>Physicians</option>
-                    <option>Dermatologists</option>
-                    <option>Endocrinologists</option>
-                    <option>cardiologists</option>
-                </select>
-            </div>
+            <select class="form-select" aria-label="Default select example" name="doc_spec">
+
+                <option>select--Speciality</option>
+                @foreach (var item in ViewBag.speciality)
+                {
+                    <option>@item.spec</option>
+                }
+            </select>
         </div>
+    </div>
 
-        <div class="form-group row">
-            <label for="example-date-input" class="col-2 col-form-label">Date</label>
-            <div class="col-10">
-                <input class="form-control" type="date" placeholder="yyyy-mm-dd" min='1899-01-01' id="datefield" name="adate">
-            </div>
+    <div class="form-group row">
+        <label for="example-date-input" class="col-2 col-form-label">Date</label>
+        <div class="col-10">
+            <input class="form-control" type="date" placeholder="yyyy-mm-dd" min='1899-01-01' id="datefield" name="adate">
         </div>
+    </div>
 
-        <div class="form-group row">
-            <label for="" class="col-2 col-form-label"></label>
-            <div class="col-10">
+    <div class="form-group row">
+        <label for="" class="col-2 col-form-label"></label>
+        <div class="col-10">
 
-                <input type="submit" class="btn btn-warning font-weight-bold form-control" value="Check"/>
-            </div>
+            <input type="submit" class="btn btn-warning font-weight-bold form-control" value="Check" />
         </div>
-    </form>
+    </div>
+</form>
 <!--End Query Check-->
 
+<div id="my_table">
+    <table class="table table-dark table-hover" id="his_table">
+        <thead>
 
-<table class="table table-dark table-hover">
-    <thead>
+            <tr class="text-lg-center">
 
-        <tr class="text-lg-center">
+                <th>Doctor</th>
+                <th>Speciality</th>
+                <th>City</th>
+                <th>Action</th>
 
-            <th>Doctor</th>
-            <th>Speciality</th>
-            <th>City</th>
-            <th>Action</th>
-
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in ViewBag.data)
-        {
-            <tr class="text-lg-center" style="font-size:larger;">
-
-                <td>@item.d_full_name</td>
-                <td>@item.d_speciality</td>
-                <td>@item.d_city</td>
-                <td><a class="btn btn-primary" asp-controller="Profile" asp-action="Index" asp-route-did="@item.d_id">Profile</a>  <a class="btn btn-success text-warning" asp-controller="Appointment" asp-action="Insert" asp-route-did="@item.d_id" asp-route-adate="@ViewBag.date">Book</a></td>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in ViewBag.data)
+            {
+                <tr class="text-lg-center" style="font-size:larger;">
+
+                    <td>@item.d_full_name</td>
+                    <td>@item.d_speciality</td>
+                    <td>@item.d_city</td>
+                    <td><a class="btn btn-primary" asp-controller="Profile" asp-action="Index" asp-route-adate="@ViewBag.date" asp-route-Url="@ViewBag.Url" asp-route-doc_id="@item.d_id">Profile</a>  <a class="btn btn-success text-warning" asp-controller="Appointment" asp-action="Insert" asp-route-did="@item.d_id" asp-route-adate="@ViewBag.date">Book</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 
 
-
-<a class="btn-danger" asp-controller="Login" asp-action="Logout">Logout</a>

@@ -161,14 +161,12 @@
                                 <div class="form-group">
                                     <label>Speciality</label>
                                     <select Class="form-control" name="d_speciality">
-
-                                        <option>select</option>
-                                        <option>Anesthesiologists</option>
-                                        <option>Cardiologists</option>
-                                        <option>Dermatologists</option>
-                                        <option>Endocrinologists</option>
-                                        <option>Physicians</option>
-                                        <option>Gastroenterologists</option>
+                                        <option>select--Speciality</option>
+                                        @foreach (var item in ViewBag.speciality)
+                                        {
+                                        <option>@item.spec</option>
+                                        }
+                                        
 
 
                                     </select>

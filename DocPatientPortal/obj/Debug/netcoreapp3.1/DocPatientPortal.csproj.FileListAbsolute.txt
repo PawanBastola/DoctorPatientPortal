@@ -201,3 +201,9 @@ E:\Projects\DocPatientPortal\DocPatientPortal\obj\Debug\netcoreapp3.1\Razor\View
 E:\Projects\DocPatientPortal\DocPatientPortal\obj\Debug\netcoreapp3.1\Razor\Views\Prescription\Index.cshtml.g.cs
 E:\Projects\DocPatientPortal\DocPatientPortal\obj\Debug\netcoreapp3.1\Razor\Views\Feedback\doctorfeedback.cshtml.g.cs
 E:\Projects\DocPatientPortal\DocPatientPortal\obj\Debug\netcoreapp3.1\Razor\Views\Profile\PatientProfile.cshtml.g.cs
+E:\Projects\DocPatientPortal\DocPatientPortal\obj\Debug\netcoreapp3.1\Razor\Views\Speciality\Index.cshtml.g.cs
+E:\Projects\DocPatientPortal\DocPatientPortal\bin\Debug\netcoreapp3.1\MailKit.dll
+E:\Projects\DocPatientPortal\DocPatientPortal\bin\Debug\netcoreapp3.1\MimeKit.dll
+E:\Projects\DocPatientPortal\DocPatientPortal\bin\Debug\netcoreapp3.1\NETCore.MailKit.dll
+E:\Projects\DocPatientPortal\DocPatientPortal\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
+E:\Projects\DocPatientPortal\DocPatientPortal\obj\Debug\netcoreapp3.1\Razor\Views\Profile\DoctorOwnProfile.cshtml.g.cs

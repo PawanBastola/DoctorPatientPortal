@@ -15,6 +15,7 @@ namespace DocPatientPortal.Models
         public int uid { get; set; }
         public int doc_id { get; set; }
         public DateTime adate { get; set; }
-        
+        public string status { get; set; }
+
     }
 }

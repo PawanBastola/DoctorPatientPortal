@@ -1,25 +1,8 @@
 ﻿
-@model DocPatientPortal.Models.User
 @{
-    Layout = "_LayoutPatient";
+    Layout = "_LayoutDoctor";
 }
-@section Scripts{ 
-<script type="text/javascript">
-    $(document).ready(function ($) {
 
-        if (window.history && window.history.pushState) {
-
-            window.history.pushState('forward', null, './#forward');
-
-            $(window).on('popstate', function () {
-                $.get(@ViewBag.Url);
-
-            });
-
-        }
-    });
-</script>
-}
 
 <br />
 <div class="mainContainer">
@@ -33,7 +16,7 @@
             <div class="content">
                 <div class="leftContent">
 
-                    
+
                     <p>Name: @ViewBag.ViewProfile.d_full_name</p>
                     <p>Gender: @ViewBag.ViewProfile.d_gender</p>
                     <!--<p>Blood gp.: O+ve</p>

@@ -18,10 +18,18 @@ namespace DocPatientPortal.Controllers
 
         public IActionResult AddPrescription(Prescription prescription)
         {
+            int uid = prescription.p_id;
+            Appointment this_appointment = dal.appointmentss.Where(x=>x.uid==uid).ToList().First();
+            this_appointment.status = "Appointed";
+
+            dal.appointmentss.Update(this_appointment);
+            //checking
             dal.prescriptions.Add(prescription);
             dal.SaveChanges();
             return RedirectToAction("Index","Doc_Appointments");
         }
+
+       
 
 
         

@@ -27,8 +27,10 @@ namespace DocPatientPortal.Controllers
 
             if (HttpContext.Session.GetString("Logged") == "true")
             {
+                ViewBag.speciality = dal.specialities.ToList();
                 var data = dal.Doctors.ToList();
                 ViewBag.Data = data;
+                ViewBag.id = "nothing";//null exception handling
                 return View();
             }
             else
@@ -39,12 +41,13 @@ namespace DocPatientPortal.Controllers
 
         //overriding the method
 
-        [HttpPost]
+        [HttpGet]
         public IActionResult ApptBook(String adate, String doc_spec)
         {
             try
             {
 
+                ViewBag.speciality = dal.specialities.ToList();
                 // List<Unavaibility> absentdate = dal.unavaibilities.Where(x => x.absent_date.Equals(adate)).ToList<Unavaibility>();
                 //List<Doctor_Details> available_doctors = dal.Doctors.Where(s=>s.d_speciality.Equals(doc_spec)).Where(x=>absentdate.All(z=>z.did!=x.d_id)).ToList<Doctor_Details>();
 
@@ -56,8 +59,10 @@ namespace DocPatientPortal.Controllers
                 List<Doctor_Details> date_filters = available_doctors.Where(x => udatelist.All(y => y.did != x.d_id)).ToList<Doctor_Details>();
                 //eureka! eureka!! at 1:06 am morning
 
+                ViewBag.Url = "https://localhost:44326/Appointment/ApptBook?doc_spec="+doc_spec+"&adate="+adate;
                 ViewBag.Data = date_filters;
                 ViewBag.date = adate;
+                ViewBag.id = "#my_table";//for unhiding table after check is clicked
                 return View();
             }
             catch (Exception)
@@ -127,7 +132,8 @@ namespace DocPatientPortal.Controllers
             {
                 adate = adate,
                 uid = pid,
-                doc_id = did
+                doc_id = did,
+                status="Pending"
 
             };
 
@@ -155,7 +161,7 @@ namespace DocPatientPortal.Controllers
 
 
                     //list of appointment of user
-                    List<Appointment> appointmentList = dal.appointmentss.Where(x => x.uid.Equals(pid)).ToList<Appointment>();
+                    List<Appointment> appointmentList = dal.appointmentss.Where(x => x.uid.Equals(pid)).Where(y=>y.status.Equals("Pending")).ToList<Appointment>();
                     List<Doctor_Details> doctorList = dal.Doctors.ToList<Doctor_Details>();
                     ViewBag.appointments = appointmentList;
                     ViewBag.doctorList = doctorList;

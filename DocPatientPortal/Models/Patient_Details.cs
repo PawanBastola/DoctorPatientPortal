@@ -22,6 +22,7 @@ namespace DocPatientPortal.Models
         public String p_gender { get; set; }
         public String p_fulladdress { get; set; }
         public String p_blood { get; set; }
+        [ForeignKey("userlogin")]
         public String p_username { get; set; }
 
     }

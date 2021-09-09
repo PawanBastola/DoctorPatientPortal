@@ -54,7 +54,7 @@
                     @{var doc_id = Context.Session.GetString("doc_id");}
                     <li class="nav-item">
                         <div class="profileimage">
-                            <a asp-controller="Profile" asp-action="Index" asp-route-doc_id ="@doc_id" title="View Profile"> <img src="~/image/profile.jpg" style="width:50px; height:50px; border:3px solid #31a24c; border-radius:50%;" alt="User Profile" /> </a>
+                            <a asp-controller="Profile" asp-action="DoctorOwnProfile" asp-route-doc_id ="@doc_id" title="View Profile"> <img src="~/image/profile.jpg" style="width:50px; height:50px; border:3px solid #31a24c; border-radius:50%;" alt="User Profile" /> </a>
                         </div>
 
                     </li>

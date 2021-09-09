@@ -15,22 +15,41 @@ namespace DocPatientPortal.Controllers
         DataContext dal = new DataContext();
 
 
-        public IActionResult Index(int doc_id)
+        public IActionResult Index(int doc_id, string Url)
         {
 
             if (HttpContext.Session.GetString("Logged") == "true")
             {
                 //String username = JsonConvert.DeserializeObject<UserLogin>(HttpContext.Session.GetString("User")).username;
                 //int did = dal.Doctors.Where(x => x.d_username.Equals(username)).First().d_id;
-            var docData = dal.Doctors.Find(doc_id);
-            ViewBag.ViewProfile = docData;
-            return View();
+                var docData = dal.Doctors.Find(doc_id);
+                ViewBag.ViewProfile = docData;
+                ViewBag.Url = Url;
+                return View();
             }
             else
             {
                 return RedirectToAction("Index", "Login");
             }
         }
+
+        public IActionResult DoctorOwnProfile(int doc_id)
+        {
+
+            if (HttpContext.Session.GetString("Logged") == "true")
+            {
+                //String username = JsonConvert.DeserializeObject<UserLogin>(HttpContext.Session.GetString("User")).username;
+                //int did = dal.Doctors.Where(x => x.d_username.Equals(username)).First().d_id;
+                var docData = dal.Doctors.Find(doc_id);
+                ViewBag.ViewProfile = docData;
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
+        }
+
 
         public IActionResult PatientProfile(int pat_id)
         {
@@ -39,10 +58,10 @@ namespace DocPatientPortal.Controllers
                 var patientData = dal.Patients.Find(pat_id);
                 ViewBag.Patient = patientData;
 
-                var diagnoseddata = dal.prescriptions.Where(x=>x.p_id.Equals(pat_id)).ToList(); 
+                var diagnoseddata = dal.prescriptions.Where(x => x.p_id.Equals(pat_id)).ToList();
                 ViewBag.Prescription = diagnoseddata;
-                
-            return View();
+
+                return View();
             }
             else
             {
@@ -52,11 +71,11 @@ namespace DocPatientPortal.Controllers
 
 
 
-       
 
-        
 
-        
+
+
+
 
     }
 }

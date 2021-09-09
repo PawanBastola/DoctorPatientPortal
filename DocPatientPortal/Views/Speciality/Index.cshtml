@@ -1,0 +1,14 @@
+﻿@page
+@model DocPatientPortal.Views.Speciality.IndexModel
+@{
+    Layout = "_LayoutAdmin";
+}
+<br />
+<br />
+<form method="post" asp-controller="Speciality" asp-action="Insert">
+    
+    <label class="form-group">Speciality:</label>
+    <input type="text" name="spec" />
+    <input type="submit" value="ADD" class="btn btn-primary"/>
+
+</form>
