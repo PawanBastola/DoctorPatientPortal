@@ -58,7 +58,7 @@ namespace DocPatientPortal.Controllers
         [HttpPost]
         public async Task<IActionResult> Doctor_register(DoctorSignupViewModel viewmodel)
         {
-            string folder = "image/certificate/";
+            string folder = "image/certificate/"; 
 
             UserLogin login = new UserLogin()
             {
