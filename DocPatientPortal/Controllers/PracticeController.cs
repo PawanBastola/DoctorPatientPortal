@@ -16,5 +16,11 @@ namespace DocPatientPortal.Controllers
         {
             return View();
         }
+        public IActionResult Puttingcode()
+        {
+            return View();
+        }
+
+
     }
 }

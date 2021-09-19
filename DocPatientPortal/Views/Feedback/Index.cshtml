@@ -1,17 +1,78 @@
 ﻿@page
 @model DocPatientPortal.Views.CustomerFeedback.IndexModel
 @{
-    Layout = "_LayoutPatient";
+    ViewBag.role = "admin";
 
-    //how to filter the layout according to the role. i.e if user the user_layout if admin admin_layou.
-    //1. we can overcome using the third layout. i.e. same layout for user/admin.
+    if (ViewBag.role == "admin")
+    {
+        Layout = "_LayoutPractice";
+    }
+    else if (ViewBag.role == "doctor")
+    {
+        Layout = "_LayoutDoctor";
+    }
+    else
+    {
+        Layout = "_LayoutPatient";
+    }
 }
+
+   
+
 <br />
-<div class="card">
-    Feedback:
-    <div class="col-4">
-        <textarea></textarea>
-        <a href="#" class="btn btn-primary">Send</a>
+
+@if (ViewBag.role == "admin")
+{
+
+
+
+    //admin code starts
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-sm-flex align-items-center mb-4">
+                        <h4 class="card-title mb-sm-0">FeedBack from Doctors & Patients</h4>
+                    </div>
+                    
+                        @foreach (var item in ViewBag.feedbacks)
+                        {
+                            var fullname = item.fullname;
+                            <fieldset>
+                                @if (item.role == "doctor")
+                                {
+                                    fullname = "Dr." + item.fullname;
+                                }
+                                <legend>
+                                    @fullname
+                                </legend>
+                                <blockquote class="text-white badge badge-success">@item.message</blockquote>
+                            </fieldset>
+                            <hr class="my-12">
+                            <br />
+                        }
+
+                    
+
+
+                </div>
+            </div>
+        </div>
     </div>
 
-</div>
+
+    //admin code ends
+}
+
+@if (ViewBag.role == "doctor" || ViewBag.role == "patient")
+{
+
+    <div class="card">
+        Feedback:
+        <div class="col-4">
+            <textarea></textarea>
+            <a href="#" class="btn btn-primary">Send</a>
+        </div>
+
+    </div>
+}

@@ -1,7 +1,7 @@
 ﻿@page
 @model DocPatientPortal.Views.Admin_Appointment.View_AppointmentModel
 @{
-    Layout = "_LayoutAdmin";
+    Layout = "_LayoutPractice";
 }
 
 @section Scripts
@@ -19,28 +19,27 @@
 
         <tr>
 
+            <th>#</th>
             <th>Doctor</th>
             <th>Patient</th>
             <th>Date</th>
-            <th>Time</th>
 
         </tr>
     </thead>
     <tbody>
-        <tr>
+        @{ var i = 1;}
+        @foreach (var item in ViewBag.allappointmenttoday)
+        {
 
-            <td>Hari</td>
-            <td>Ravi</td>
-            <td>2/1/2021</td>
-            <td>12:00 am</td>
-        </tr>
-        <tr>
-            <td>Shyam</td>
-            <td>Roshan</td>
-            <td>2/4/2021</td>
-            <td>9:00 am</td>
+            <tr>
 
+                <td>@i</td>
+                <td>@item.doctor_name</td>
+                <td>@item.patient_name</td>
+                <td>@item.adate.ToString("dd/MM/yyyy")</td>
+            </tr>
+            i++;
+        }
 
-        </tr>
     </tbody>
 </table>

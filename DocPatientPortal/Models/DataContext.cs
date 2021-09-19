@@ -33,6 +33,8 @@ namespace DocPatientPortal.Models
         public DbSet<Unavailability> unavaibilities { get; set; }
         public DbSet<Prescription> prescriptions { get; set; }
         public DbSet<Speciality> specialities { get; set; }
+        public DbSet<Organdetail> organdetails { get; set; }
+        public DbSet<Feedback> feedbacks { get; set; }
 
         //Need to register your models here
         // public DbSet<Product> Products { get; set; }

@@ -1,8 +1,9 @@
 ﻿@page
 @model DocPatientPortal.Views.NewRequest.IndexModel
 @{
-    Layout = "_LayoutAdmin";
+    Layout = "_LayoutPractice";
 }
+
 
 @section Scripts
 {
@@ -13,33 +14,53 @@
         });
     </script>
 }
-<br />
-<table class="table table-hover datatablejquery">
-    <thead class="thead-dark">
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-sm-flex align-items-center mb-4">
+                    <h4 class="card-title mb-sm-0">Pending Registration</h4>
+                </div>
+                <div class="table-responsive border rounded p-1">
+                    <table class="table table-hover align-items-center datatablejquery">
+                        <thead>
+                            <tr>
+                                <th class="font-weight-bold">S.N.</th>
+                                <th class="font-weight-bold">Name</th>
+                                <th class="font-weight-bold">Address</th>
+                                <th class="font-weight-bold">Phone</th>
+                                <th class="font-weight-bold">Status</th>
+                                <th class="font-weight-bold">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-        <tr>
 
-            <th>S.N.</th>
-            <th>Name</th>
-            <th>Address</th>
-            <th>Phone</th>
-            <th>Action</th>
+                            @if (ViewBag.doctors != null)
+                            {
 
-        </tr>
-    </thead>
-    <tbody>
-        @foreach(var doctor_det in ViewBag.doctors)
-        {
+                                @foreach (var doctor_det in ViewBag.doctors)
+                                {
+                                    <tr>
+                                        <td>@doctor_det.d_id</td>
+                                        <td>@doctor_det.d_full_name</td>
+                                        <td>@doctor_det.d_full_address</td>
+                                        <td>@doctor_det.d_contact</td>
+                                        <td>
+                                            <div class="badge badge-success p-2">Pending</div>
+                                        </td>
+                                        <td><a asp-controller="NewRequest" asp-action="Approve" asp-route-username="@doctor_det.d_username" class="btn btn-success">Approve</a><a asp-controller="NewRequest" asp-action="Deny" asp-route-username="@doctor_det.d_username" class="btn btn-danger">deny</a><a asp-controller="NewRequest" asp-action="ViewRequest" asp-route-id="@doctor_det.d_id" class="btn btn-primary">detail</a></td>
+                                    </tr>
+                                }
+                            }
 
-        <tr>
 
-            <td>@doctor_det.d_id</td>
-            <td>@doctor_det.d_full_name</td>
-            <td>@doctor_det.d_full_address</td>
-            <td>@doctor_det.d_contact</td>
-            <td><a asp-controller="NewRequest" asp-action="Approve" asp-route-username="@doctor_det.d_username" class ="btn btn-success">Approve</a><a asp-controller="NewRequest" asp-action="Deny" asp-route-username="@doctor_det.d_username" class="btn btn-danger">deny</a><a asp-controller="NewRequest" asp-action="ViewRequest" asp-route-id="@doctor_det.d_id" class="btn btn-primary">detail</a></td>
-        </tr>
-        }
-    
-    </tbody>
-</table>
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </table>

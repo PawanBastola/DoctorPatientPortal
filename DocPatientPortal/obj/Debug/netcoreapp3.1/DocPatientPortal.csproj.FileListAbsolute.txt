@@ -59,7 +59,6 @@ E:\Projects\DocPatientPortal\DocPatientPortal\bin\Debug\netcoreapp3.1\System.Col
 E:\Projects\DocPatientPortal\DocPatientPortal\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
 E:\Projects\DocPatientPortal\DocPatientPortal\obj\Debug\netcoreapp3.1\Razor\Views\Profile\Index.cshtml.g.cs
 E:\Projects\DocPatientPortal\DocPatientPortal\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutPatient.cshtml.g.cs
-E:\Projects\DocPatientPortal\DocPatientPortal\obj\Debug\netcoreapp3.1\Razor\Views\Practice\ImageInsert.cshtml.g.cs
 E:\Projects\DocPatientPortal\DocPatientPortal\obj\Debug\netcoreapp3.1\Razor\Views\Practice\Index.cshtml.g.cs
 E:\Projects\DocPatientPortal\DocPatientPortal\obj\Debug\netcoreapp3.1\Razor\Views\Blood\Index.cshtml.g.cs
 E:\Projects\DocPatientPortal\DocPatientPortal\obj\Debug\netcoreapp3.1\Razor\Views\Update\Index.cshtml.g.cs
@@ -207,3 +206,9 @@ E:\Projects\DocPatientPortal\DocPatientPortal\bin\Debug\netcoreapp3.1\MimeKit.dl
 E:\Projects\DocPatientPortal\DocPatientPortal\bin\Debug\netcoreapp3.1\NETCore.MailKit.dll
 E:\Projects\DocPatientPortal\DocPatientPortal\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
 E:\Projects\DocPatientPortal\DocPatientPortal\obj\Debug\netcoreapp3.1\Razor\Views\Profile\DoctorOwnProfile.cshtml.g.cs
+E:\Projects\DocPatientPortal\DocPatientPortal\bin\Debug\netcoreapp3.1\bundleconfig.json
+E:\Projects\DocPatientPortal\DocPatientPortal\obj\Debug\netcoreapp3.1\Razor\Pages\Error.cshtml.g.cs
+E:\Projects\DocPatientPortal\DocPatientPortal\obj\Debug\netcoreapp3.1\Razor\Pages\_Layout.cshtml.g.cs
+E:\Projects\DocPatientPortal\DocPatientPortal\obj\Debug\netcoreapp3.1\Razor\Pages\_ViewImports.cshtml.g.cs
+E:\Projects\DocPatientPortal\DocPatientPortal\obj\Debug\netcoreapp3.1\Razor\Pages\_ViewStart.cshtml.g.cs
+E:\Projects\DocPatientPortal\DocPatientPortal\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutPractice.cshtml.g.cs

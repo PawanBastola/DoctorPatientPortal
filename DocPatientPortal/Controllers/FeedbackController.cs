@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using DocPatientPortal.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,10 +10,14 @@ namespace DocPatientPortal.Controllers
 {
     public class FeedbackController : Controller
     {
+        DataContext dal = new DataContext();
         public IActionResult Index()
         {
             if (HttpContext.Session.GetString("Logged") == "true")
             {
+                var feedbacks = dal.feedbacks.ToList();
+                ViewBag.feedbacks = feedbacks;
+
                 return View();
 
             }

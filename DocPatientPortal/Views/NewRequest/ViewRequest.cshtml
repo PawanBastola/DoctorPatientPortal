@@ -1,23 +1,61 @@
 ﻿@page
 @model DocPatientPortal.Views.NewRequest.ViewRequestModel
 @{
-    Layout = "_LayoutAdmin";
+    Layout = "_LayoutPractice";
 }
 
-<p>@ViewBag.this_doctor.d_id</p>
-<p>@ViewBag.this_doctor.d_full_name</p>
-<p>@ViewBag.this_doctor.d_dob</p>
-<p>@ViewBag.this_doctor.d_contact</p>
-<p>@ViewBag.this_doctor.d_email</p>
-<img src="@ViewBag.this_doctor.d_certificate" alt="Alternate Text" />
-<p>@ViewBag.this_doctor.d_state</p>
-<p>@ViewBag.this_doctor.d_city</p>
-<p>@ViewBag.this_doctor.d_full_address</p>
-<p>@ViewBag.this_doctor.d_gender</p>
-<p>@ViewBag.this_doctor.d_blood_group</p>
-<p>@ViewBag.this_doctor.d_speciality</p>
-<p>@ViewBag.this_doctor.d_username</p>
 
-<pre>you can also approve and delete from here</pre>
+<!--<div class="row">-->
+<!-- Alerts Basic -->
+<!--<div class="col-lg-6">
+        <div class="card shadow-sm mb-4">
 
-<a class="btn btn-success" asp-controller="NewRequest" asp-action="Approve" asp-route-username=@ViewBag.this_doctor.d_username>Approve</a> <a class="btn btn-danger" asp-controller="NewRequest" asp-action="Deny" asp-route-username=@ViewBag.this_doctor.d_username>Deny</a>
+            <p>@ViewBag.this_doctor.d_id</p>
+            <p>@ViewBag.this_doctor.d_full_name</p>
+            <p>@ViewBag.this_doctor.d_dob</p>
+            <p>@ViewBag.this_doctor.d_contact</p>
+            <p>@ViewBag.this_doctor.d_email</p>
+            <img src="@ViewBag.this_doctor.d_certificate" alt="Alternate Text" />
+            <p>@ViewBag.this_doctor.d_state</p>
+            <p>@ViewBag.this_doctor.d_city</p>
+            <p>@ViewBag.this_doctor.d_full_address</p>
+            <p>@ViewBag.this_doctor.d_gender</p>
+            <p>@ViewBag.this_doctor.d_blood_group</p>
+            <p>@ViewBag.this_doctor.d_speciality</p>
+            <p>@ViewBag.this_doctor.d_username</p>
+
+
+        </div>
+    </div>
+</div>-->
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-2 img" style="height:200px;">
+            <a href="@ViewBag.this_doctor.d_certificate" class="popover">
+                <img src="@ViewBag.this_doctor.d_certificate" style="height:200px; width:150px" alt="" class="img img-rounded img-fluid rounded img-thumbnail">
+            </a>
+        </div>
+        <div class="col-md-6 details">
+            <blockquote>
+                <h5>@ViewBag.this_doctor.d_full_name</h5>
+                <small><cite title="Source Title"> @ViewBag.this_doctor.d_full_address <i class="icon-map-marker"></i></cite></small>
+            </blockquote>
+            <p>
+                @ViewBag.this_doctor.d_email <br>
+                @ViewBag.this_doctor.d_dob.ToString("dd/MM/yyyy")
+                <br /> @ViewBag.this_doctor.d_contact
+                <br /> @ViewBag.this_doctor.d_gender
+                <br /> @ViewBag.this_doctor.d_blood_group
+                <br /> @ViewBag.this_doctor.d_speciality
+                <br />
+            </p>
+
+            <a class="btn btn-success" asp-controller="NewRequest" asp-action="Approve" asp-route-username=@ViewBag.this_doctor.d_username>Approve</a> <a class="btn btn-danger" asp-controller="NewRequest" asp-action="Deny" asp-route-username=@ViewBag.this_doctor.d_username>Deny</a>
+        </div>
+    </div>
+</div>
+
+
+<!--new modal-->

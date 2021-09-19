@@ -31,11 +31,10 @@ namespace DocPatientPortal.Controllers
                 //setting session using HttpContext
 
                 HttpContext.Session.SetString("User", JsonConvert.SerializeObject(user_List[0])); //note argument should be in strings only.
-                
                 HttpContext.Session.SetString("Logged", "true");
                 HttpContext.Session.SetString("password", password);
 
-                return RedirectToAction("View_Appointment", "Admin_Appointment");
+                return RedirectToAction("Index", "NewRequest");
             }
             #endregion
             #region ELSE IF patient role check

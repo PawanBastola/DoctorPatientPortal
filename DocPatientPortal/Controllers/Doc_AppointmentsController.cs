@@ -23,7 +23,8 @@ namespace DocPatientPortal.Controllers
                 //getting did from login session
                 String username = JsonConvert.DeserializeObject<UserLogin>(HttpContext.Session.GetString("User")).username;
                 //now we can bring the doc id
-                List<Doctor_Details> doc = dal.Doctors.Where(x=>x.d_username.Equals(username)).ToList();
+
+                List<Doctor_Details> doc = dal.Doctors.Where(x=>x.d_username.Equals(username)).ToList(); //write SingleOrDefault
 
                 //list of todays appointment
                 List<Appointment> appointmentlist = dal.appointmentss.Where(x => x.doc_id.Equals(doc[0].d_id)).Where(y=>y.adate.Equals(DateTime.Now.Date)).Where(z=>z.status.Equals("Pending")).ToList<Appointment>();
@@ -35,6 +36,7 @@ namespace DocPatientPortal.Controllers
                     uid = appointmentx.uid,
                     adate = appointmentx.adate,
                     patient_name = dal.Patients.Where(x=>x.p_id==appointmentx.uid).First().p_fullname
+
                 }).ToList();
 
                 

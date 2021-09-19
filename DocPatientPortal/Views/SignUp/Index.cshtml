@@ -23,7 +23,8 @@
             });
 
         });
-    </script>
+    </script>    
+
 }
 <br />
 
@@ -55,7 +56,7 @@
                     </div>
 
 
-                    <form method="post" enctype="multipart/form-data" asp-controller="SignUp" asp-action="Doctor_register">
+                    <form id="registrationForm" autocomplete="off" method="post" enctype="multipart/form-data" asp-controller="SignUp" asp-action="Doctor_register">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -164,9 +165,9 @@
                                         <option>select--Speciality</option>
                                         @foreach (var item in ViewBag.speciality)
                                         {
-                                        <option>@item.spec</option>
+                                            <option>@item.spec</option>
                                         }
-                                        
+
 
 
                                     </select>
@@ -282,7 +283,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Photo</label>
-                                    <input type="file"  class="form-control" accept="image/*" name="photo" /><!--here name="photo" is of IFormFile Type-->
+                                    <input type="file" class="form-control" accept="image/*" name="photo" /><!--here name="photo" is of IFormFile Type-->
                                 </div>
                             </div>
                         </div>

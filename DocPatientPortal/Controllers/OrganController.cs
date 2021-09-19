@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using DocPatientPortal.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ namespace DocPatientPortal.Controllers
 {
     public class OrganController : Controller
     {
+        DataContext dal = new DataContext();
         public IActionResult OrgDonate()
         {
             if (HttpContext.Session.GetString("Logged") == "true")
@@ -28,6 +30,8 @@ namespace DocPatientPortal.Controllers
             if (HttpContext.Session.GetString("Logged") == "true")
             {
 
+                var organs = dal.organdetails.Where(x=>x.status.Equals("Available"));
+                ViewBag.OrganDetails = organs;
                 return View();
             }
             else
