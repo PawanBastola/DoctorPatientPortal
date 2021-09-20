@@ -1,6 +1,7 @@
 ﻿using DocPatientPortal.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,11 @@ namespace DocPatientPortal.Controllers
             {
                 var feedbacks = dal.feedbacks.ToList();
                 ViewBag.feedbacks = feedbacks;
+
+                //setting viewbag for role
+                string role = JsonConvert.DeserializeObject<UserLogin>(HttpContext.Session.GetString("User")).role;
+                ViewBag.role = role;
+
 
                 return View();
 

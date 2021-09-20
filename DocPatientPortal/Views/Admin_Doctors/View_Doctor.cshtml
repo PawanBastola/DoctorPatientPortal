@@ -18,7 +18,7 @@
     <thead>
 
         <tr>
-            <th>sn</th>
+            <th>#</th>
             <th>Name</th>
             <th>Speciality</th>
             <th>Phone number</th>
@@ -27,21 +27,19 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>1</td>
-            <td>Salunkhey</td>
-            <td>Bone</td>
-            <td>+91 9845784125</td>
-            <td>salunkhey@gmail.com</td>
-            <td><a class="btn btn-warning">Update</a>   <a class="btn btn-danger"> Delete </a></td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Tarika</td>
-            <td>Skin</td>
-            <td>+91 984556825</td>
-            <td>tarika@gmail.com</td>
-            <td><a class="btn btn-warning">Update</a>   <a class="btn btn-danger"> Delete </a></td>
-        </tr>
+        @{ var i = 1;}
+        @foreach (var doctor in ViewBag.doctorlist)
+            {
+            
+            <tr>
+                <td>@i</td>
+                <td>@doctor.d_full_name</td>
+                <td>@doctor.d_speciality</td>
+                <td>@doctor.d_contact</td>
+                <td>@doctor.d_email</td>
+                <td><a class="btn btn-success" asp-controller="Admin_Doctors" asp-action="gotoUpdate" asp-route-d_username="@doctor.d_username">Update</a>   <a class="btn btn-danger" asp-controller="Admin_Doctors" asp-action="deleteDoctor" asp-route-d_username="@doctor.d_username"> Delete </a></td>
+            </tr>
+            i++;
+        }
     </tbody>
 </table>

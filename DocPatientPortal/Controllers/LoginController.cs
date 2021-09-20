@@ -33,6 +33,7 @@ namespace DocPatientPortal.Controllers
                 HttpContext.Session.SetString("User", JsonConvert.SerializeObject(user_List[0])); //note argument should be in strings only.
                 HttpContext.Session.SetString("Logged", "true");
                 HttpContext.Session.SetString("password", password);
+                HttpContext.Session.SetString("username", username);
 
                 return RedirectToAction("Index", "NewRequest");
             }
@@ -46,6 +47,7 @@ namespace DocPatientPortal.Controllers
                 HttpContext.Session.SetString("pat_id", pat_id);
                 HttpContext.Session.SetString("Logged", "true");
                 HttpContext.Session.SetString("password", password);
+                HttpContext.Session.SetString("username", username);
 
                 //doctor role
                 return RedirectToAction("ApptBook", "Appointment");
@@ -60,6 +62,7 @@ namespace DocPatientPortal.Controllers
                 HttpContext.Session.SetString("doc_id",doc_id);
                 HttpContext.Session.SetString("Logged", "true");
                 HttpContext.Session.SetString("password", password);
+                HttpContext.Session.SetString("username", username);
 
                 //doctor role
                 return RedirectToAction("Index", "Doc_Appointments");//doctor page to insert

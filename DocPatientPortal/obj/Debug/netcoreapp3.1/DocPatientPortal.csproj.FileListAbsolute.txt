@@ -212,3 +212,4 @@ E:\Projects\DocPatientPortal\DocPatientPortal\obj\Debug\netcoreapp3.1\Razor\Page
 E:\Projects\DocPatientPortal\DocPatientPortal\obj\Debug\netcoreapp3.1\Razor\Pages\_ViewImports.cshtml.g.cs
 E:\Projects\DocPatientPortal\DocPatientPortal\obj\Debug\netcoreapp3.1\Razor\Pages\_ViewStart.cshtml.g.cs
 E:\Projects\DocPatientPortal\DocPatientPortal\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutPractice.cshtml.g.cs
+E:\Projects\DocPatientPortal\DocPatientPortal\obj\Debug\netcoreapp3.1\Razor\Views\Admin_Doctors\gotoUpdate.cshtml.g.cs
